@@ -1,4 +1,91 @@
-# Tables and source map (r53)
+# Reading the tables and their sources (r53)
+
+This guide explains all seven tables in the [frozen paper](../papers/http-session-noms/NOMS2027-r53.pdf). [Figures 1–2 have an illustrated guide](figures.md). Table numbers refer to r53, not earlier manuscripts.
+
+## How to read the numbers
+
+An origin is an address–fingerprint pair, not a unique person or machine. Production windows last five minutes. FA measures how often a filter is selected in clean windows; FA coll. measures the median damage **among those false alarms**. Coverage includes attack windows in which the trigger never fires. These quantities have different denominators; see [metrics](metrics.md).
+
+Observed zero, a blank/dash and `n/a` are distinct: zero is a measured result, a blank/dash is not computed, and `n/a` denotes a conditional median with no false alarms. Bold marks FA rates above the 1% budget. For configuration components and terminology, see the [glossary](concepts.md).
+
+## Table I — Related approaches
+
+**Question:** What does each approach select, and which operational question does it address?
+
+Read each row across: prior work, selection criterion, then its main question. Anomaly extraction identifies explanatory feature values; PacketScore scores packets against a nominal profile; the JA3 report discusses HTTPS mitigation; this work evaluates the coverage and collateral of endpoint-relative JA4 filtering.
+
+“New” means absent from the particular endpoint's profile, not a globally new TLS implementation. The table positions the research question. It supplies no common benchmark or evidence of superiority over the listed approaches.
+
+## Table II — Configurations and chronology
+
+**Question:** Which trigger, scope and fleet policy make up each configuration, and when was it fixed?
+
+Follow the three component columns together. The primary configuration uses the origin trigger, binomial **union novelty** selection and known-fleet exemptions. The beta-binomial arm changes both the trigger and statistical model, uses cross-fitting, and has no fleet exemption. The E1-only no-trigger arm retains the primary scope and exemption while removing its trigger.
+
+The separators record chronology. The first six rows were fixed for the prospective evaluation, but the held-out-day protocol fixed only the primary and base rule. The novelty rule and two arms were pre-registered after that day, before the prospective data were examined; 11 of the 14 prospective days had not yet begun when the protocol was published. The two-path rule is post hoc, though fixed before E5 was examined.
+
+In the last row, the slashes pair two paths: novelty without the trigger, and binomial selection with the origin trigger. These are components of one rule. The table defines configurations, not their measured effectiveness; use Table V for that comparison.
+
+## Table III — Calibration floors
+
+**Question:** How large must a 25-stack botnet be for the scope alone to select a typical stack?
+
+`n0` is the median legitimate origin count per window. The two `λe` columns are calibrated score cutoffs. Each floor cell gives **in sample / cross-fitted**, using development-day medians; the slash is not division. New fingerprints are absent from the profile, whereas shared ones are already present.
+
+For example, E1's primary shared floor `254/286` means 254 or 286 attackers per window, depending on the calibration procedure. It is the size of the whole injected botnet needed to select a typical stack, not a number of blocked attackers or a guarantee of selecting all stacks. Random variation allows selection below the floor, and a separate trigger can still prevent action above it.
+
+**Finding:** Legitimate fleets and shared fingerprints can make the floor large relative to normal traffic. E2's primary shared floor is `1090/1041` against `n0 = 62`. This is meaningful because attacks are added to the legitimate window. Extremely small `λe` values are calibrated scores, not reliable literal false-alarm probabilities. Table V uses the primary in sample and the beta-binomial arm cross-fitted.
+
+## Table IV — Two real attacks at E5
+
+**Question:** What would the filters have removed, with what collateral, and how does delayed application change that result?
+
+The first block holds the primary configuration fixed and changes timing: selection-window application, one-window delay, then delayed filters retained to the attack's end. The other configurations are compared in their selecting windows.
+
+For each attack, `Req.` is the fraction of requests on selected fingerprints; `Att.` and `Leg.` are blocked fractions of attacker and legitimate origins respectively. Counts are summed over that attack's windows before taking the fractions. `Leg.e` repeats collateral under the alternative labels that count only edge-blocked addresses as attackers. `FA` instead uses E5's 1,152 clean windows across four days.
+
+**Example:** One window late, the primary filters remove 36.5% and 35.7% of the attacks' requests, with 0.02% and 0.05% legitimate-origin collateral. Under the alternative labels that collateral is 1.61% and 0.07%. The novelty and two-path rules each have 8.94% clean-window FA, above budget.
+
+These are post hoc counterfactual replays of attacks already rate-limited by the CDN. Request removal is neither the fraction of distinct machines completely blocked nor a measured improvement over the WAF. Fingerprint rotation also helped the origin trigger fire. Preserve the alternative-label and clean-day results when interpreting the positive request-removal result.
+
+## Table V — The 14-day prospective evaluation
+
+**Question:** Which configurations trade coverage for false alarms and collateral over the prospective period?
+
+Read the column groups separately:
+
+- FA `all` pools 16,103 clean windows; `E1` is the busiest endpoint; `E2–E4` is the **highest** rate among those endpoints.
+- `FA coll.` is the pooled median collateral per false alarm. `Crowds` is the pooled filter-firing rate under 1,000-client crowds.
+- `E1, 0.1×` is about 300 attackers at E1. `100 attackers` pools a different injection size across endpoints. New and Shared describe fingerprint overlap with the profile.
+- The no-trigger arm is E1-only; its additional values are in the note and cannot be read as pooled results across E1–E4.
+
+**Example:** The primary row's FA of 0.19% and FA coll. of 39.0% mean infrequent false alarms with substantial damage in affected windows. They do not mean 39% of all legitimate traffic was blocked. Multiplying the FA rate by this median does not yield expected collateral, which requires the conditional mean.
+
+The novelty rule has no observed prospective false alarms and 89.6% new-stack coverage at E1, but zero shared-stack coverage. The beta-binomial arm reaches 39.7% on the pooled 100-attacker shared scenario, with median FA collateral of 65.7%. The E1-only no-trigger arm exceeds budget at 1.56% FA. The two-path row combines novelty and primary results post hoc; it was not a seventh pre-registered configuration. Zero observed novelty alarms here does not contradict its failures at E5 in Table IV.
+
+## Table VI — Scopes alone on generated traffic
+
+**Question:** How does fingerprint selection change as attackers spread across more stacks or share legitimate fingerprints?
+
+`K = 1000` is the attacker count; `M` is the number of stacks, with results over 15 seeds. Rows labelled only by `M` use new stacks. The last two use shared and adversarial fingerprints. The binomial columns report recall, collateral in attack windows (`Att. coll.`), and F1. The other three scope columns are **recall only**; their collateral is supplied in the note.
+
+**Finding:** At 25 new stacks the binomial test selects 90.3% of attackers with no observed collateral. At 100 stacks, too few attackers per stack reduce recall to 38.6%. Shared and adversarial cases have 85.4% and 30.4% recall, with 2.23% and 3.78% collateral. The modal rule blocks 39.0% of legitimate traffic from five stacks onward, while the z-score's collateral reaches 3.37% on shared and 11.3% on adversarial stacks.
+
+The approximate 90% recall ceiling comes from the one-off fingerprints assigned to about one bot in ten. These are isolated scopes in the alarm cluster, without the production trigger. Their recall cannot be equated with end-to-end coverage in Tables V or VII, and an absent collateral column does not imply zero damage.
+
+## Table VII — Scopes under different triggers
+
+**Question:** What changes when a scope runs behind the origin trigger, a seasonal trigger, or no trigger?
+
+Compare scopes within a trigger block, then compare the same scope across blocks. `binomial` and `beta-bin.` **include novelty** here. Origin/binomial is the primary configuration, Seasonal/beta-bin. is the beta-binomial arm, and None/novelty is the standalone novelty rule of Table II. The beta-binomial rows use cross-fitting.
+
+FA and New have separate development (`dev.`) and held-out (`held`) columns. Shared, Crowds and FA coll. use **development days only**. Crowds and FA coll. pool the endpoints; New and Shared concern **E1's 0.1× botnet only**. E2–E4 FA is their highest endpoint rate, not their mean.
+
+**Example:** On development days, removing the trigger from the binomial configuration raises E1 new-stack coverage from 11.8% to 89.6%, while the largest E2–E4 false-alarm rate rises from 0.28% to 4.38%. The seasonal binomial variant reaches 20.4% coverage but also exceeds budget at 2.64%. This shows why Fig. 2's coverage gain must be read alongside false-alarm costs.
+
+Some variants were added after the held-out day, as marked in the table. A held-out column does not make every displayed variant a pre-specified held-out test. Table V supplies the later prospective comparison.
+
+## Exports and provenance
 
 The [machine-readable export](../experiments/sprint-6-noms/results/r53/tables.json)
 contains all seven tables, original LaTeX, notes, row groups and the source hash.
@@ -20,6 +107,4 @@ Result paths above are relative to `experiments/sprint-6-noms/results/`.
 The [audit report](../experiments/sprint-6-noms/results/r53/audit.json) lists every
 checked cell and its coverage limits. See [metrics](metrics.md) for denominators.
 
-The two figures are frozen in `papers/http-session-noms/figures/`. Fig. 1 is the
-pipeline diagram; Fig. 2 uses `production_tables.json` to compare coverage with
-and without the trigger. Historical filename `fig6_stops.png` now represents Fig. 2.
+The [figure guide](figures.md) explains the two current figures and links their generators and numerical sources.

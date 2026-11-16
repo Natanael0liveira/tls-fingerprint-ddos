@@ -17,6 +17,8 @@ Expected: 11 pages; main text, acknowledgment and reproducibility through page 8
 
 ## Regenerate figures
 
+The [figure guide](../../docs/figures.md) explains both diagrams, their visual encodings and limitations. The [table guide](../../docs/tables.md) explains all seven tables, including populations, periods and worked examples.
+
 From the repository root, install `experiments/requirements-figures.txt`, then:
 
 ```sh

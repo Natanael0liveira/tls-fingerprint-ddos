@@ -4,7 +4,8 @@ Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filteri
 
 - [Frozen paper](papers/http-session-noms/NOMS2027-r53.pdf), [LaTeX](papers/http-session-noms/article.tex), [checksums](papers/http-session-noms/freeze.json)
 - [Glossary and configurations](docs/concepts.md)
-- [Tables and provenance](docs/tables.md), [metrics](docs/metrics.md), [study design](docs/evaluation.md)
+- [Figures explained](docs/figures.md), [tables explained and provenance](docs/tables.md)
+- [Metrics](docs/metrics.md), [study design](docs/evaluation.md)
 - [Findings and limitations](experiments/FINDINGS.md)
 - [Reproduction and availability](docs/reproduction.md)
 
@@ -27,7 +28,7 @@ The data span 23 days at four operator endpoints: 3 initial calibration days, 5 
 | Path | Purpose |
 |---|---|
 | `papers/http-session-noms/` | Frozen r53 source, PDF and two figures |
-| `docs/` | Current definitions, metrics, table map and reproduction guide |
+| `docs/` | Current definitions, metrics, figure and table reading guides, and reproduction guide |
 | `experiments/sprint-6-noms/` | Evaluation scripts and committed aggregate results |
 | `experiments/sprint-1/` through `sprint-5/`, `common/`, `pillar*/` | Earlier experiment infrastructure, including dependencies still imported by the evaluation |
 | `ontology/` | Vocabulary read by the reference implementation |
