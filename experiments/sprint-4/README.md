@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+
 # Sprint 4: earlier 30-seed run and weight calibration
 
 This stage ran the (a) to (d) ablation and the baselines over 30 seeds, with

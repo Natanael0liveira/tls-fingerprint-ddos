@@ -1,0 +1,152 @@
+{
+  "source_archive_sha256": "cd06ec11b0e5f98e0ca27bb0ff159976a257cbe256667123786b686989a0722a",
+  "files": [
+    {
+      "source": "resultados/bateria_f3_2026-11-11.json",
+      "source_sha256": "7ef262133f236fa049e15ac5e6b5e0a450690143220c3e02b46d75aeb7704947",
+      "path": "experiments/sprint-6-noms/results/posthoc/bateria_f3_2026-11-11.json",
+      "sha256": "7e4a3f5dd25e2556f23d0ea571a81d5c345764dc8da3e754260cba34c7e95003",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/bateria_f4_2026-11-11.json",
+      "source_sha256": "f322de055af3096765d6d970ea9bbde5aa7c1b13e905fbcdc75892dda96450b7",
+      "path": "experiments/sprint-6-noms/results/posthoc/bateria_f4_2026-11-11.json",
+      "sha256": "d789f12cc10b5e2aae8feffe02eef46898e50e124fc0b2294dfecb87d3d16bfe",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/fallback_por_endpoint_2026-11-11.json",
+      "source_sha256": "e3e90ec41540629d41b0cb8d0e5885f3febed5f2aa467245e39ab7c122e9c8f1",
+      "path": "experiments/sprint-6-noms/results/posthoc/fallback_por_endpoint_2026-11-11.json",
+      "sha256": "abd849873670f81e268583c25f3933fbfb4d431aad9a263fb034313e603fe01a",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/comparacao_igual_2026-11-11.json",
+      "source_sha256": "900c863575af10a90c84d62ba1ca677e6c5a599fabb46a8fe57c11f017e08abd",
+      "path": "experiments/sprint-6-noms/results/posthoc/comparacao_igual_2026-11-11.json",
+      "sha256": "dfccb2335406dcafbd51e989523fc63573f419b13046609cd465ce9a590feef5",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/bateria_f2_2026-11-11.json",
+      "source_sha256": "b7703f55a831056bc8938c95b2d09e470f16e0d88cebcf4e30cb5edc8105bac0",
+      "path": "experiments/sprint-6-noms/results/posthoc/bateria_f2_2026-11-11.json",
+      "sha256": "93f19f1e30fe3533dbbd3be76fa4d0e4fe4e76045685ce511a94c26cdd80348e",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/zhist_2026-11-11.json",
+      "source_sha256": "2d46f25c7e23a33058516d7779c221374abf7b90eb2db1061f961109da58d897",
+      "path": "experiments/sprint-6-noms/results/posthoc/zhist_2026-11-11.json",
+      "sha256": "4e37cc909f702fb6f08eb6719a6c4549ef59d050ad793f95a81325467945b065",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/mesmas_janelas_fa_2026-11-12.json",
+      "source_sha256": "9a8b350c3217f99616e4b60a623aee71020971634269e6349655526932da5e8b",
+      "path": "experiments/sprint-6-noms/results/posthoc/mesmas_janelas_fa_2026-11-12.json",
+      "sha256": "0e5ebd779191a7d2cda6ca97d4cb4389d3376000602222fff50cc711159cd47b",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "resultados/bateria_f_2026-11-11.json",
+      "source_sha256": "a2e33035dd35a7881b894a6bbec4d044ec9a4e97be86659104e819b9c5096d35",
+      "path": "experiments/sprint-6-noms/results/posthoc/bateria_f_2026-11-11.json",
+      "sha256": "01b51d9e7c39b672b24597471f7a7748f01a35312f9cbcad1d719b9fe2fa115e",
+      "changes": "Metadata paths normalized and operator hosts replaced by E1–E4; numeric results unchanged."
+    },
+    {
+      "source": "incidente/verificacoes-r17/delay_modes.json",
+      "source_sha256": "f71e3016677fa07af98dfbb16afd967da5d4d82d4721ba0a53f80c7346e80be2",
+      "path": "experiments/sprint-6-noms/results/posthoc/e5_delay_modes.json",
+      "sha256": "cf3b6fa2347f25dc12015abe19ab367f800571c4061a080ec1eaee7e4f403b79",
+      "changes": "Removed per-window timestamps and selected fingerprint identifiers; aggregate timing results unchanged."
+    },
+    {
+      "source": "resultados/e5_sem_rotacao_2026-11-12.json",
+      "source_sha256": "78fc437aa7ea57dae9e1a4252a27cc018915e294650d854379745142bdaad8f9",
+      "path": "experiments/sprint-6-noms/results/posthoc/e5_rotation_summary.json",
+      "sha256": "a7f5e4a1506a46ea38dde78b5a4f65f789f68973304471a789bb4ca9eca35f34",
+      "changes": "Published aggregate counts only; removed per-window identifiers/timestamps."
+    },
+    {
+      "source": "auditoria/trabalho/work_B/strat_out.json",
+      "source_sha256": "b9446d9643d282ead90f1bd39465436a93392dcabe3901ee9d6c018964e64d9c",
+      "path": "experiments/sprint-6-noms/results/posthoc/stratified_independence.json",
+      "sha256": "5697eceab198b4b3761559b2a0e23dee9e2099888fbf6134f46b293173551d9d",
+      "changes": "Formatting only."
+    },
+    {
+      "source": "scripts/bateria_f.py",
+      "source_sha256": "0ff171f1d4664aa43dfed8dd668d5167f8f8a29db602bb88f785d30ef287b11c",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/bateria_f.py",
+      "sha256": "3c6ae4c95d5cf2dd5b771ca4cdc38043115d17250111ff5eed61b7754bfa1bf7",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "scripts/bateria_f2.py",
+      "source_sha256": "2e1a712e7f46ccb814cf730358146549a66a5ab9a0d97dfa1346f26c904e25a8",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/bateria_f2.py",
+      "sha256": "16d96588f7d008a03c1f77418ecbcae828a2c3e50690ac29ee50003cb942b13c",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "scripts/bateria_f3.py",
+      "source_sha256": "4a6a0d25f08ad299ff3cf5208fec66940553c05860ac02c5b6865e8341b04fc7",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/bateria_f3.py",
+      "sha256": "808760c0af5dc13a045bcb8777e6b39889d0281dbc4d8b7a880c97b2fa8e34b4",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "scripts/bateria_f4.py",
+      "source_sha256": "78917f8dfff2b8fb60f8305a8ccd49535555852fbb972fd96aed8e857af4b1e7",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/bateria_f4.py",
+      "sha256": "706dbcaadc6cdcdb520de441fa9abd88ecc33badb94b8df2959903731058f1d8",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "scripts/fallback_por_endpoint.py",
+      "source_sha256": "3f4ffb1c7acea32f56117a6a0979ffee7681b3467cdcbdc6d4777cfb77b026ec",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/fallback_por_endpoint.py",
+      "sha256": "6e24c617c7dd456abcf0096c948f90062de9ec4d7481426fe1cb4f6d1d901feb",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "scripts/regra_uniao.py",
+      "source_sha256": "135aec932e8356265b5794c866cd8c9d8764961cc1e5ab481b2a94fae45682f9",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/regra_uniao.py",
+      "sha256": "5bcf72e859c10db5dd081ffd1458039bf4c71a11400d02a2b26b9b3193b59822",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "scripts/hourly_compare.py",
+      "source_sha256": "f1e84a937d9bae0c7831839050f55e7b3414341e185aa6ae18f613bdbd6738c9",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/hourly_compare.py",
+      "sha256": "5c2767da76acebe22a4a6b3db4a5e5535ae3eb08e55afbf44b118018ebb96df0",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "auditoria/trabalho/work_B/strat.py",
+      "source_sha256": "6e8fe3fe945205be718d51c8aa254f6b79497f90c09479ebf0398c4ec92e345b",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/strat.py",
+      "sha256": "5a2657c83e4ca5e3d575803d74273fadfdc979115be053813486897eadc4f920",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "auditoria/trabalho/work_B/holm.py",
+      "source_sha256": "841590adb11c40b8960fc4b9b4992448e2b539b6f4a3757516dc593da0f895a1",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/holm.py",
+      "sha256": "841590adb11c40b8960fc4b9b4992448e2b539b6f4a3757516dc593da0f895a1",
+      "changes": "Repository imports made relative; private data path and host-to-endpoint map supplied through PRODDATA and ENDPOINT_MAP. Algorithms unchanged."
+    },
+    {
+      "source": "incidente/verificacoes-r17/delay_modes.py",
+      "source_sha256": "2e69effc4f205ea7cb49a7740469903c8ccd5a478018a6d4005660467c07f259",
+      "path": "experiments/sprint-6-noms/scripts/posthoc/e5_delay_modes.py",
+      "sha256": "abbbc728cefba56700327ed71f650ba9441ea612b49d5144d51f999a281c5ca8",
+      "changes": "Input paths, dates and attack windows moved to a private manifest; selected fingerprint IDs omitted from output; selection/timing arithmetic preserved."
+    }
+  ]
+}

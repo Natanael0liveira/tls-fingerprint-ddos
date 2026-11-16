@@ -1,0 +1,95 @@
+{
+  "note": "Like-for-like comparison behind the origin trigger, both selectors without the count and without known-fleet exemptions (run 'base' of production_tables.py), each calibrated to the same 1% budget on the calibration windows: 'binomial_test_alone' = key enrichment|origins; 'history_baseline' = key zhist|origins (a fingerprint's count against its own calibration mean and standard deviation, threshold at the 99th percentile of the per-window maximum, at least 3). Post hoc: zhist was added on 2026-09-26 (commit 5b054f7), after the held-out day, and is not among the prospective protocol's six configurations. These are the two post hoc rows of Table VI (prospective) and the development-day figures quoted in Section V-D. Rates and shares in percent. The E1 tenth-size botnet cells of Table VI were not computed for these two rows.",
+  "sources": {
+    "development_days": "experiments/sprint-6-noms/results/production_tables.json",
+    "prospective_period": "experiments/sprint-6-noms/results/production_tables_block.json"
+  },
+  "development_days": {
+    "binomial_test_alone": {
+      "false_alarms": 6,
+      "clean_windows": 5643,
+      "false_alarm_rate": 0.106,
+      "false_alarms_per_endpoint": {
+        "E1": 2,
+        "E2": 3,
+        "E3": 1,
+        "E4": 0
+      },
+      "false_alarm_rate_per_endpoint": {
+        "E1": 0.14,
+        "E2": 0.21,
+        "E3": 0.07,
+        "E4": 0.0
+      },
+      "flash_crowd_1000_firing": 21.8,
+      "collateral_median_per_false_alarm": 31.4,
+      "blocked_100_attackers_new_stacks": 26.1,
+      "blocked_100_attackers_shared_stacks": 20.2
+    },
+    "history_baseline": {
+      "false_alarms": 52,
+      "clean_windows": 5643,
+      "false_alarm_rate": 0.921,
+      "false_alarms_per_endpoint": {
+        "E1": 27,
+        "E2": 15,
+        "E3": 1,
+        "E4": 9
+      },
+      "false_alarm_rate_per_endpoint": {
+        "E1": 1.88,
+        "E2": 1.04,
+        "E3": 0.07,
+        "E4": 0.68
+      },
+      "flash_crowd_1000_firing": 76.9,
+      "collateral_median_per_false_alarm": 5.4,
+      "blocked_100_attackers_new_stacks": 14.1,
+      "blocked_100_attackers_shared_stacks": 13.9
+    }
+  },
+  "prospective_period": {
+    "binomial_test_alone": {
+      "false_alarms": 31,
+      "clean_windows": 16103,
+      "false_alarm_rate": 0.193,
+      "false_alarms_per_endpoint": {
+        "E1": 0,
+        "E2": 17,
+        "E3": 10,
+        "E4": 4
+      },
+      "false_alarm_rate_per_endpoint": {
+        "E1": 0.0,
+        "E2": 0.42,
+        "E3": 0.25,
+        "E4": 0.1
+      },
+      "flash_crowd_1000_firing": 16.8,
+      "collateral_median_per_false_alarm": 39.0,
+      "blocked_100_attackers_new_stacks": 29.4,
+      "blocked_100_attackers_shared_stacks": 22.0
+    },
+    "history_baseline": {
+      "false_alarms": 78,
+      "clean_windows": 16103,
+      "false_alarm_rate": 0.484,
+      "false_alarms_per_endpoint": {
+        "E1": 0,
+        "E2": 15,
+        "E3": 9,
+        "E4": 54
+      },
+      "false_alarm_rate_per_endpoint": {
+        "E1": 0.0,
+        "E2": 0.37,
+        "E3": 0.22,
+        "E4": 1.35
+      },
+      "flash_crowd_1000_firing": 75.1,
+      "collateral_median_per_false_alarm": 47.5,
+      "blocked_100_attackers_new_stacks": 12.3,
+      "blocked_100_attackers_shared_stacks": 12.3
+    }
+  }
+}

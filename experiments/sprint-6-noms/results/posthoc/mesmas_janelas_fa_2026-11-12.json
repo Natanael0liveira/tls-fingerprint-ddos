@@ -1,0 +1,6 @@
+{
+  "note": "Prospective period, clean windows, origin trigger. The primary configuration (count and known fleets) and the binomial test alone (run base, no count, no fleets) raise false alarms in the same 31 windows; the union without fleets too. Post hoc, 12 Nov 2026, answers the expert r22 question 4.",
+  "primary": 31,
+  "binomial_alone": 31,
+  "same_windows": 31
+}

@@ -1,0 +1,64 @@
+{
+  "dev": {
+    "pooled": {
+      "fallbacks": 163,
+      "false_alarms": 5,
+      "challenged_share": 0.08274505110511726
+    },
+    "E1": {
+      "fallbacks": 78,
+      "false_alarms": 0,
+      "windows": 1440,
+      "challenged_share": 0.08452266899003323
+    },
+    "E2": {
+      "fallbacks": 41,
+      "false_alarms": 4,
+      "windows": 1440,
+      "challenged_share": 0.05717417642646974
+    },
+    "E3": {
+      "fallbacks": 21,
+      "false_alarms": 1,
+      "windows": 1440,
+      "challenged_share": 0.03336023675006726
+    },
+    "E4": {
+      "fallbacks": 23,
+      "false_alarms": 0,
+      "windows": 1323,
+      "challenged_share": 0.04649382633873598
+    }
+  },
+  "prospective": {
+    "pooled": {
+      "fallbacks": 202,
+      "false_alarms": 31,
+      "challenged_share": 0.0058883099572662155
+    },
+    "E1": {
+      "fallbacks": 11,
+      "false_alarms": 0,
+      "windows": 4032,
+      "challenged_share": 0.0045915461871942785
+    },
+    "E2": {
+      "fallbacks": 12,
+      "false_alarms": 17,
+      "windows": 4032,
+      "challenged_share": 0.006530262228432706
+    },
+    "E3": {
+      "fallbacks": 88,
+      "false_alarms": 10,
+      "windows": 4032,
+      "challenged_share": 0.04941324673581389
+    },
+    "E4": {
+      "fallbacks": 91,
+      "false_alarms": 4,
+      "windows": 4007,
+      "challenged_share": 0.07054542166768382
+    }
+  }
+}

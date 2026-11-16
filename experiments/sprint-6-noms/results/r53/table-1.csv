@@ -1,0 +1,5 @@
+work,selection,question
+"Anomaly extraction~\cite{silveira2010urca,brauckhoff2009extraction}",Over-represented feature values,Which values explain an anomaly?
+PacketScore~\cite{kim2006packetscore},Packets scored against a nominal profile,Which packets to drop under overload?
+JA3 report~\cite{kobayashi2024ja3},HTTPS traffic using JA3,Can JA3 mitigate HTTPS floods in a security operations center?
+This work,New or over-represented JA4 at the endpoint,What coverage and collateral does filtering yield?

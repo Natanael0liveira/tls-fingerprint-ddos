@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../README.md). Older paper-section references below belong to earlier revisions.
+
 # Experiments
 
 Code, configurations and committed results for every experimental stage of the paper

@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+
 # Sprint 3: baselines, first ablation and laboratory captures
 
 This stage holds the code of configurations (a) to (d) and of the three academic

@@ -1,0 +1,64 @@
+{
+  "block binomial": {
+    "observed": 31,
+    "windows": 16103,
+    "endpoint": {
+      "expected": 2.874009545794859,
+      "P": 1.2322216126278513e-21
+    },
+    "endpoint_day": {
+      "expected": 3.197327144961182,
+      "P": 2.456706308569769e-20
+    },
+    "endpoint_day_hour": {
+      "expected": 5.75,
+      "P": 1.6706866229910123e-13
+    },
+    "endpoint_n_decile": {
+      "expected": 11.004827041307621,
+      "P": 5.948372637340433e-07
+    },
+    "weekday_window_share": 0.7143389430540893,
+    "weekday_fa": 30
+  },
+  "block z-score": {
+    "observed": 20,
+    "windows": 16103,
+    "endpoint": {
+      "expected": 8.136439863671116,
+      "P": 0.00031252755723653323
+    },
+    "endpoint_day": {
+      "expected": 8.666720358393292,
+      "P": 0.0006757680142010016
+    },
+    "endpoint_day_hour": {
+      "expected": 9.666666666666666,
+      "P": 0.0023831034208427163
+    },
+    "endpoint_n_decile": {
+      "expected": 8.167927952396237,
+      "P": 0.0003279032691443649
+    }
+  },
+  "block bb seasonal": {
+    "observed": 20,
+    "windows": 16103,
+    "endpoint": {
+      "expected": 3.6621790462920054,
+      "P": 2.4020443988475284e-09
+    },
+    "endpoint_day": {
+      "expected": 3.678237511846305,
+      "P": 2.5822866254476862e-09
+    },
+    "endpoint_day_hour": {
+      "expected": 8.166666666666668,
+      "P": 0.00032727492772384144
+    },
+    "endpoint_n_decile": {
+      "expected": 6.374482550380309,
+      "P": 1.2247366745375774e-05
+    }
+  }
+}

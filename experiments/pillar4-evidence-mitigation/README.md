@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+
 # Pillar 4: evidence chain and scope derivation
 
 [`scripts/evidence_mitigation.py`](scripts/evidence_mitigation.py) is the library

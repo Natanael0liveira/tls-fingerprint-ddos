@@ -1,0 +1,10 @@
+{
+  "fired_with_rotation": 9,
+  "threshold": 5996,
+  "smallest_size_that_fired": 6161,
+  "fired_without_rotation_upper_bound": 3,
+  "blocked_fp_per_address_range": [
+    1.0,
+    2.85
+  ]
+}

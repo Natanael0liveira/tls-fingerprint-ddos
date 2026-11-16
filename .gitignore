@@ -88,5 +88,11 @@ papers/*/information-*.pdf
 papers/http-session-noms/article.pdf
 papers/http-session-noms-pt/article.pdf
 
+# The authors' writing-style guide stays local
+docs/writing-style.md
+
 # LaTeX scratch
 texput.log
+
+# Immutable delivery is published under papers/http-session-noms/.
+entrega-NOMS2027-r53/

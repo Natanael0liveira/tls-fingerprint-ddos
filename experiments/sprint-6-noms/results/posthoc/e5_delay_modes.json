@@ -1,0 +1,70 @@
+{
+  "attack 1": {
+    "same": {
+      "pairs": 0.3274,
+      "legit": 0.00047,
+      "requests": 0.472,
+      "legit_max_window": 0.00121,
+      "edge_label_pairs": 0.4387,
+      "edge_label_legit": 0.02584
+    },
+    "next": {
+      "pairs": 0.3038,
+      "legit": 0.00023,
+      "requests": 0.3649,
+      "legit_max_window": 0.00071,
+      "edge_label_pairs": 0.4149,
+      "edge_label_legit": 0.0161
+    },
+    "kept_sel": {
+      "pairs": 0.3555,
+      "legit": 0.00052,
+      "requests": 0.4874,
+      "legit_max_window": 0.00121,
+      "edge_label_pairs": 0.4772,
+      "edge_label_legit": 0.02716
+    },
+    "kept_next": {
+      "pairs": 0.3134,
+      "legit": 0.00023,
+      "requests": 0.3651,
+      "legit_max_window": 0.00071,
+      "edge_label_pairs": 0.4216,
+      "edge_label_legit": 0.02289
+    }
+  },
+  "attack 2": {
+    "same": {
+      "pairs": 0.4749,
+      "legit": 0.00091,
+      "requests": 0.4814,
+      "legit_max_window": 0.00372,
+      "edge_label_pairs": 0.5132,
+      "edge_label_legit": 0.00137
+    },
+    "next": {
+      "pairs": 0.2754,
+      "legit": 0.00052,
+      "requests": 0.3568,
+      "legit_max_window": 0.0015,
+      "edge_label_pairs": 0.2977,
+      "edge_label_legit": 0.00074
+    },
+    "kept_sel": {
+      "pairs": 0.5136,
+      "legit": 0.00119,
+      "requests": 0.4948,
+      "legit_max_window": 0.00372,
+      "edge_label_pairs": 0.555,
+      "edge_label_legit": 0.00166
+    },
+    "kept_next": {
+      "pairs": 0.3795,
+      "legit": 0.0007,
+      "requests": 0.43,
+      "legit_max_window": 0.0015,
+      "edge_label_pairs": 0.4106,
+      "edge_label_legit": 0.00092
+    }
+  }
+}

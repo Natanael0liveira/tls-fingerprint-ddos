@@ -1,4 +1,5 @@
-# Sprint 6 (NOMS): the experiments of the NOMS 2027 submission.
+# Historical execution harness, retained for data-drive reproduction.
+# Current r53 mapping: ../../docs/tables.md; audit checks the frozen r53 tables.
 #
 # `make` lists the targets, grouped by what they need: the repository only, the
 # scenario caches on the data drive, or the operator's exports on the drive
@@ -43,7 +44,7 @@ RULEWORK ?= $(DATA)/synth/sprint6_rule
 
 help:
 	@echo "No external data required:"
-	@echo "  make audit              # the paper's sprint-6 numbers against results/"
+	@echo "  make audit              # current r53 numeric table cells against results/"
 	@echo "  make block-report-check # the block report's code on the paper's numbers"
 	@echo "  make block-report       # the block's metrics 1-10, from the committed reductions"
 	@echo "  make compile-check      # the count query compiled from the ontology, on generated sessions"

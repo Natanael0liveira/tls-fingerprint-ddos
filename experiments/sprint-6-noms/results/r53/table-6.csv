@@ -1,0 +1,7 @@
+scenario,binomial_recall_pct,binomial_collateral_pct,binomial_F1,modal_recall_pct,zscore_recall_pct,novelty_recall_pct
+M=1,89.8%,0.00%,0.946,89.8%,89.8%,89.8%
+M=5,90.0%,0.00%,0.948,0.0%,90.0%,90.0%
+M=25,90.3%,0.00%,0.949,0.0%,90.3%,90.3%
+M=100,38.6%,0.00%,0.556,0.0%,80.4%,88.1%
+"M=25, shared",85.4%,2.23%,0.910,0.0%,89.9%,0.0%
+"M=25, adversarial",30.4%,3.78%,0.452,3.6%,57.3%,0.0%

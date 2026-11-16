@@ -1,0 +1,70 @@
+{
+  "dev": {
+    "E1": {
+      "false_alarms": 0,
+      "clean_client_windows": 4113571.0,
+      "share_of_all_client_windows": 0.9504251019722569,
+      "same_window_share": 0.0,
+      "hold_12_share": 0.0
+    },
+    "E2": {
+      "false_alarms": 4,
+      "clean_client_windows": 121331.0,
+      "share_of_all_client_windows": 0.028033071034241516,
+      "same_window_share": 0.0017390444321731461,
+      "hold_12_share": 4.120958370078546e-05
+    },
+    "E3": {
+      "false_alarms": 1,
+      "clean_client_windows": 63189.0,
+      "share_of_all_client_windows": 0.014599580697288303,
+      "same_window_share": 0.0007438003449967557,
+      "hold_12_share": 0.0
+    },
+    "E4": {
+      "false_alarms": 0,
+      "clean_client_windows": 30047.0,
+      "share_of_all_client_windows": 0.006942246296213291,
+      "same_window_share": 0.0,
+      "hold_12_share": 0.0
+    },
+    "E2-E4 pooled": {
+      "same_window_share": 0.001202421621218547,
+      "hold_12_share": 2.3302744597258666e-05
+    }
+  },
+  "prospective": {
+    "E1": {
+      "false_alarms": 0,
+      "clean_client_windows": 11073394.0,
+      "share_of_all_client_windows": 0.9480846853597577,
+      "same_window_share": 0.0,
+      "hold_12_share": 0.0
+    },
+    "E2": {
+      "false_alarms": 17,
+      "clean_client_windows": 324183.0,
+      "share_of_all_client_windows": 0.027755983174985222,
+      "same_window_share": 0.0038866936267478555,
+      "hold_12_share": 0.00028379032830222435
+    },
+    "E3": {
+      "false_alarms": 10,
+      "clean_client_windows": 193693.0,
+      "share_of_all_client_windows": 0.016583656913263228,
+      "same_window_share": 0.0024007062722968824,
+      "hold_12_share": 0.003923734982678775
+    },
+    "E4": {
+      "false_alarms": 4,
+      "clean_client_windows": 88482.0,
+      "share_of_all_client_windows": 0.0075756745519939125,
+      "same_window_share": 0.0020682172645283786,
+      "hold_12_share": 0.005842996315634818
+    },
+    "E2-E4 pooled": {
+      "same_window_share": 0.003146655935932238,
+      "hold_12_share": 0.002257742125938802
+    }
+  }
+}

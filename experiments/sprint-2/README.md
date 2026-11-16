@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+
 # Sprint 2: calibrated synthetic generator
 
 This stage holds the generator behind every result on generated traffic, and the

@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+
 # Sprint 5: comparison with KLAGE on CIC-IoT2023
 
 This stage scores DDoS Slowloris against every other session of CIC-IoT2023, to set

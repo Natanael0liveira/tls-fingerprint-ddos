@@ -1,0 +1,18 @@
+{
+  "dev": {
+    "false_alarms": 5,
+    "selecting_window_share_median": 0.3291139240506329,
+    "later_mean_share_median_all": 0.0,
+    "later_mean_share_median_returning": 0.0030399120581768983,
+    "returning": 1,
+    "later_mean_share_max": 0.0030399120581768983
+  },
+  "prospective": {
+    "false_alarms": 31,
+    "selecting_window_share_median": 0.3902439024390244,
+    "later_mean_share_median_all": 0.0036231884057971015,
+    "later_mean_share_median_returning": 0.03616051766786238,
+    "returning": 20,
+    "later_mean_share_max": 0.49415995117603345
+  }
+}

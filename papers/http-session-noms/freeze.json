@@ -1,0 +1,17 @@
+{
+  "revision": "r53",
+  "date": "2026-11-16",
+  "reference_pdf": "NOMS2027-r53.pdf",
+  "sha256": {
+    "IEEEtran.bst": "314f0ece704568faf827011bac498650691b2b5ee06320720830e782416d5a5f",
+    "IEEEtran.cls": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
+    "NOMS2027-r53.pdf": "77c2029a9d4b9b3ee8c0599d7804cea81412cb94cf54b0ede6564e8ec1efb534",
+    "article.tex": "29af9e0abb75e0f61b3fbf4ade0c0a4d01359225ef13a33ceb1edf5beb49102c",
+    "figures/fig1_r48.py": "ebb7cff10491c8c48a993105e10378298447860a091956ceeee935ab7e9657bb",
+    "figures/fig1_scoping.png": "f9e644125e0bc87bd590665cccfe2f6e0152687d4bd4851b060ee932fe019c00",
+    "figures/fig6_stops.png": "af1043c9b3336644ba0d9ab0296be3f0cc808b9af7c9859fd80fd059e222dbb1",
+    "figures/make_figures_en.r13.py": "f0644d5395158786fd37ff620d1033bc87af460065d88b784f664a5985d50e1a",
+    "references.bib": "b67af9f06944ba0a3d1da622179d3c9ec142bdb4353bc828c8cb16a97299b474",
+    "stfloats.sty": "c7103528ae9965d61de38876dfe8a75c6724cab6e14120cd389304ce0d1e1abb"
+  }
+}

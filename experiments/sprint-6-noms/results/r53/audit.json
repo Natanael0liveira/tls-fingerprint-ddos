@@ -1,0 +1,1321 @@
+{
+  "revision": "r53",
+  "checked_cells": 217,
+  "mismatches": [],
+  "coverage": [
+    "Table III: all numerical cells",
+    "Table IV: 24 primary timing cells from handoff aggregates",
+    "Table V: numeric cells of the six pre-registered rows",
+    "Table VI: all numerical cells",
+    "Table VII: all numerical cells"
+  ],
+  "gaps": [
+    "Table IV: alternative configuration rows and clean-day FA not independently audited here",
+    "Table V: two-path row and E1-only footnote not independently audited here",
+    "Prose and descriptive Tables I/II are not experimental numeric checks; additional post hoc aggregates are available separately"
+  ],
+  "checks": [
+    {
+      "cell": "tab:floor row 1 column 2",
+      "printed": "2,983",
+      "computed": "2,983",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 1 column 3",
+      "printed": "10^{-21}",
+      "computed": "10^{-21}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 1 column 4",
+      "printed": "10^{-4}",
+      "computed": "10^{-4}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 1 column 5",
+      "printed": "139/139",
+      "computed": "139/139",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 1 column 6",
+      "printed": "254/286",
+      "computed": "254/286",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 1 column 7",
+      "printed": "85/139",
+      "computed": "85/139",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 1 column 8",
+      "printed": "86/167",
+      "computed": "86/167",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 2",
+      "printed": "62",
+      "computed": "62",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 3",
+      "printed": "10^{-73}",
+      "computed": "10^{-73}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 4",
+      "printed": "10^{-2}",
+      "computed": "10^{-2}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 5",
+      "printed": "139/139",
+      "computed": "139/139",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 6",
+      "printed": "1090/1041",
+      "computed": "1090/1041",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 7",
+      "printed": "56/114",
+      "computed": "56/114",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 2 column 8",
+      "printed": "84/168",
+      "computed": "84/168",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 2",
+      "printed": "41",
+      "computed": "41",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 3",
+      "printed": "10^{-11}",
+      "computed": "10^{-11}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 4",
+      "printed": "10^{-2}",
+      "computed": "10^{-2}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 5",
+      "printed": "139/139",
+      "computed": "139/139",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 6",
+      "printed": "168/227",
+      "computed": "168/227",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 7",
+      "printed": "56/114",
+      "computed": "56/114",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 3 column 8",
+      "printed": "56/140",
+      "computed": "56/140",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 2",
+      "printed": "20",
+      "computed": "20",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 3",
+      "printed": "10^{-4}",
+      "computed": "10^{-4}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 4",
+      "printed": "10^{-2}",
+      "computed": "10^{-2}",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 5",
+      "printed": "84/84",
+      "computed": "84/84",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 6",
+      "printed": "84/114",
+      "computed": "84/114",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 7",
+      "printed": "56/56",
+      "computed": "56/56",
+      "ok": true
+    },
+    {
+      "cell": "tab:floor row 4 column 8",
+      "printed": "84/84",
+      "computed": "84/84",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 2",
+      "printed": "47.2",
+      "computed": "47.2",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 3",
+      "printed": "32.7",
+      "computed": "32.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 4",
+      "printed": "0.05",
+      "computed": "0.05",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 5",
+      "printed": "2.58",
+      "computed": "2.58",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 6",
+      "printed": "48.1",
+      "computed": "48.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 7",
+      "printed": "47.5",
+      "computed": "47.5",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 8",
+      "printed": "0.09",
+      "computed": "0.09",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 1 column 9",
+      "printed": "0.14",
+      "computed": "0.14",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 2",
+      "printed": "36.5",
+      "computed": "36.5",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 3",
+      "printed": "30.4",
+      "computed": "30.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 4",
+      "printed": "0.02",
+      "computed": "0.02",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 5",
+      "printed": "1.61",
+      "computed": "1.61",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 6",
+      "printed": "35.7",
+      "computed": "35.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 7",
+      "printed": "27.5",
+      "computed": "27.5",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 8",
+      "printed": "0.05",
+      "computed": "0.05",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 2 column 9",
+      "printed": "0.07",
+      "computed": "0.07",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 2",
+      "printed": "36.5",
+      "computed": "36.5",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 3",
+      "printed": "31.3",
+      "computed": "31.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 4",
+      "printed": "0.02",
+      "computed": "0.02",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 5",
+      "printed": "2.29",
+      "computed": "2.29",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 6",
+      "printed": "43.0",
+      "computed": "43.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 7",
+      "printed": "38.0",
+      "computed": "38.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 8",
+      "printed": "0.07",
+      "computed": "0.07",
+      "ok": true
+    },
+    {
+      "cell": "tab:real row 3 column 9",
+      "printed": "0.09",
+      "computed": "0.09",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 2",
+      "printed": "0.19",
+      "computed": "0.19",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 4",
+      "printed": "0.42",
+      "computed": "0.42",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 5",
+      "printed": "39.0",
+      "computed": "39.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 6",
+      "printed": "18.8",
+      "computed": "18.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 7",
+      "printed": "2.9",
+      "computed": "2.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 8",
+      "printed": "2.4",
+      "computed": "2.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 9",
+      "printed": "36.8",
+      "computed": "36.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 1 column 10",
+      "printed": "22.1",
+      "computed": "22.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 2",
+      "printed": "0.12",
+      "computed": "0.12",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 4",
+      "printed": "0.30",
+      "computed": "0.30",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 5",
+      "printed": "40.1",
+      "computed": "40.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 6",
+      "printed": "3.0",
+      "computed": "3.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 7",
+      "printed": "3.0",
+      "computed": "3.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 8",
+      "printed": "2.6",
+      "computed": "2.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 9",
+      "printed": "56.2",
+      "computed": "56.2",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 2 column 10",
+      "printed": "26.9",
+      "computed": "26.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 2",
+      "printed": "0.26",
+      "computed": "0.26",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 4",
+      "printed": "0.69",
+      "computed": "0.69",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 5",
+      "printed": "46.6",
+      "computed": "46.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 6",
+      "printed": "16.8",
+      "computed": "16.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 7",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 8",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 9",
+      "printed": "29.4",
+      "computed": "29.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 3 column 10",
+      "printed": "22.0",
+      "computed": "22.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 2",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 5",
+      "printed": "n/a",
+      "computed": "n/a",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 6",
+      "printed": "2.7",
+      "computed": "2.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 7",
+      "printed": "89.6",
+      "computed": "89.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 8",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 9",
+      "printed": "43.2",
+      "computed": "43.2",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 4 column 10",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 2",
+      "printed": "0.12",
+      "computed": "0.12",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 3",
+      "printed": "0.35",
+      "computed": "0.35",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 4",
+      "printed": "0.05",
+      "computed": "0.05",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 5",
+      "printed": "65.7",
+      "computed": "65.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 6",
+      "printed": "33.5",
+      "computed": "33.5",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 7",
+      "printed": "11.8",
+      "computed": "11.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 8",
+      "printed": "11.4",
+      "computed": "11.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 9",
+      "printed": "61.0",
+      "computed": "61.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 5 column 10",
+      "printed": "39.7",
+      "computed": "39.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 6 column 3",
+      "printed": "1.56",
+      "computed": "1.56",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 6 column 7",
+      "printed": "89.6",
+      "computed": "89.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:block row 6 column 8",
+      "printed": "67.7",
+      "computed": "67.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 1 column 2",
+      "printed": "89.8%",
+      "computed": "89.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 1 column 3",
+      "printed": "0.00%",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 1 column 4",
+      "printed": "0.946",
+      "computed": "0.946",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 1 column 5",
+      "printed": "89.8%",
+      "computed": "89.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 1 column 6",
+      "printed": "89.8%",
+      "computed": "89.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 1 column 7",
+      "printed": "89.8%",
+      "computed": "89.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 2 column 2",
+      "printed": "90.0%",
+      "computed": "90.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 2 column 3",
+      "printed": "0.00%",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 2 column 4",
+      "printed": "0.948",
+      "computed": "0.948",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 2 column 5",
+      "printed": "0.0%",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 2 column 6",
+      "printed": "90.0%",
+      "computed": "90.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 2 column 7",
+      "printed": "90.0%",
+      "computed": "90.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 3 column 2",
+      "printed": "90.3%",
+      "computed": "90.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 3 column 3",
+      "printed": "0.00%",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 3 column 4",
+      "printed": "0.949",
+      "computed": "0.949",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 3 column 5",
+      "printed": "0.0%",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 3 column 6",
+      "printed": "90.3%",
+      "computed": "90.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 3 column 7",
+      "printed": "90.3%",
+      "computed": "90.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 4 column 2",
+      "printed": "38.6%",
+      "computed": "38.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 4 column 3",
+      "printed": "0.00%",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 4 column 4",
+      "printed": "0.556",
+      "computed": "0.556",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 4 column 5",
+      "printed": "0.0%",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 4 column 6",
+      "printed": "80.4%",
+      "computed": "80.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 4 column 7",
+      "printed": "88.1%",
+      "computed": "88.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 5 column 2",
+      "printed": "85.4%",
+      "computed": "85.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 5 column 3",
+      "printed": "2.23%",
+      "computed": "2.23",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 5 column 4",
+      "printed": "0.910",
+      "computed": "0.910",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 5 column 5",
+      "printed": "0.0%",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 5 column 6",
+      "printed": "89.9%",
+      "computed": "89.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 5 column 7",
+      "printed": "0.0%",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 6 column 2",
+      "printed": "30.4%",
+      "computed": "30.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 6 column 3",
+      "printed": "3.78%",
+      "computed": "3.78",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 6 column 4",
+      "printed": "0.452",
+      "computed": "0.452",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 6 column 5",
+      "printed": "3.6%",
+      "computed": "3.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 6 column 6",
+      "printed": "57.3%",
+      "computed": "57.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:symbolic row 6 column 7",
+      "printed": "0.0%",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 5",
+      "printed": "0.28",
+      "computed": "0.28",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 6",
+      "printed": "0.69",
+      "computed": "0.69",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 7",
+      "printed": "11.8",
+      "computed": "11.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 8",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 9",
+      "printed": "7.7",
+      "computed": "7.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 10",
+      "printed": "22.2",
+      "computed": "22.2",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 1 column 11",
+      "printed": "32.9",
+      "computed": "32.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 3",
+      "printed": "0.14",
+      "computed": "0.14",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 5",
+      "printed": "0.28",
+      "computed": "0.28",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 6",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 7",
+      "printed": "11.9",
+      "computed": "11.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 8",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 9",
+      "printed": "8.3",
+      "computed": "8.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 10",
+      "printed": "10.9",
+      "computed": "10.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 2 column 11",
+      "printed": "2.0",
+      "computed": "2.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 5",
+      "printed": "0.07",
+      "computed": "0.07",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 6",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 7",
+      "printed": "11.8",
+      "computed": "11.8",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 8",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 9",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 10",
+      "printed": "3.4",
+      "computed": "3.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 3 column 11",
+      "printed": "3.3",
+      "computed": "3.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 5",
+      "printed": "2.64",
+      "computed": "2.64",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 6",
+      "printed": "0.69",
+      "computed": "0.69",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 7",
+      "printed": "20.4",
+      "computed": "20.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 8",
+      "printed": "15.3",
+      "computed": "15.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 9",
+      "printed": "14.4",
+      "computed": "14.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 10",
+      "printed": "22.3",
+      "computed": "22.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 4 column 11",
+      "printed": "35.2",
+      "computed": "35.2",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 3",
+      "printed": "0.07",
+      "computed": "0.07",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 5",
+      "printed": "0.21",
+      "computed": "0.21",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 6",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 7",
+      "printed": "20.4",
+      "computed": "20.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 8",
+      "printed": "15.3",
+      "computed": "15.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 9",
+      "printed": "15.1",
+      "computed": "15.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 10",
+      "printed": "10.9",
+      "computed": "10.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 5 column 11",
+      "printed": "16.9",
+      "computed": "16.9",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 3",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 5",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 6",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 7",
+      "printed": "20.4",
+      "computed": "20.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 8",
+      "printed": "15.3",
+      "computed": "15.3",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 9",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 10",
+      "printed": "3.4",
+      "computed": "3.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 6 column 11",
+      "printed": "n/a",
+      "computed": "n/a",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 3",
+      "printed": "0.97",
+      "computed": "0.97",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 5",
+      "printed": "4.38",
+      "computed": "4.38",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 6",
+      "printed": "1.04",
+      "computed": "1.04",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 7",
+      "printed": "89.6",
+      "computed": "89.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 8",
+      "printed": "89.7",
+      "computed": "89.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 9",
+      "printed": "61.1",
+      "computed": "61.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 10",
+      "printed": "22.4",
+      "computed": "22.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 7 column 11",
+      "printed": "32.6",
+      "computed": "32.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 3",
+      "printed": "0.90",
+      "computed": "0.90",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 4",
+      "printed": "1.74",
+      "computed": "1.74",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 5",
+      "printed": "1.46",
+      "computed": "1.46",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 6",
+      "printed": "1.39",
+      "computed": "1.39",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 7",
+      "printed": "89.7",
+      "computed": "89.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 8",
+      "printed": "90.1",
+      "computed": "90.1",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 9",
+      "printed": "65.7",
+      "computed": "65.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 10",
+      "printed": "11.0",
+      "computed": "11.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 8 column 11",
+      "printed": "6.6",
+      "computed": "6.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 3",
+      "printed": "0.28",
+      "computed": "0.28",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 4",
+      "printed": "0.00",
+      "computed": "0.00",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 5",
+      "printed": "0.42",
+      "computed": "0.42",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 6",
+      "printed": "0.35",
+      "computed": "0.35",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 7",
+      "printed": "89.6",
+      "computed": "89.6",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 8",
+      "printed": "89.7",
+      "computed": "89.7",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 9",
+      "printed": "0.0",
+      "computed": "0.0",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 10",
+      "printed": "3.4",
+      "computed": "3.4",
+      "ok": true
+    },
+    {
+      "cell": "tab:triggers row 9 column 11",
+      "printed": "5.7",
+      "computed": "5.7",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "note": "zhist (a fingerprint's count against its own calibration history, threshold calibrated to the same 1% budget), behind the origin trigger, fleets 5%; added to the pipeline on 2026-09-26 (commit 5b054f7), after the held-out day, not among the prospective protocol's six configurations; never reported in the paper. Sources: experiments/sprint-6-noms/results/production_tables.json (test_days = development days) and production_tables_block.json (test_days = prospective period).",
+  "development_days": {
+    "binomial": {
+      "fa": "5/5643",
+      "flash1000": 22.2,
+      "new_A100": 38.4,
+      "shared_A100": 21.7,
+      "coll_median": 32.9
+    },
+    "zscore": {
+      "fa": "20/5643",
+      "flash1000": 13.1,
+      "new_A100": 54.7,
+      "shared_A100": 23.7,
+      "coll_median": 10.8
+    },
+    "zhist": {
+      "fa": "52/5643",
+      "flash1000": 76.9,
+      "new_A100": 14.1,
+      "shared_A100": 13.9,
+      "coll_median": 5.4
+    }
+  },
+  "prospective_period": {
+    "zhist": {
+      "fa": "78/16103",
+      "flash1000": 75.1,
+      "new_A100": 12.3,
+      "shared_A100": 12.3,
+      "coll_median": 47.5
+    },
+    "binomial_and_zscore": "Table VI: FA 0.19 and 0.12, Fl. 1k 18.8 and 3.0, 100 attackers new 36.8 and 56.2, shared 22.1 and 26.9"
+  },
+  "superseded_by": "comparacao_igual_2026-11-11.json: this file compares zhist with the full binomial configuration (count and fleets included); the paper now uses the like-for-like comparison."
+}

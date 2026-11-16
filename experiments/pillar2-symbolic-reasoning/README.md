@@ -1,3 +1,5 @@
+> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+
 # Pillar 2: sub-relations as SWRL rules and the Ω aggregation in SPARQL
 
 This directory writes the sub-relations of Appendix A as Horn rules and computes
