@@ -1,0 +1,8 @@
+filter,attack1_requests_pct,attack1_attackers_pct,attack1_legitimate_pct,attack1_alternative_legitimate_pct,attack2_requests_pct,attack2_attackers_pct,attack2_legitimate_pct,attack2_alternative_legitimate_pct,clean_FA_pct
+Selecting window,47.2,32.7,0.05,2.58,48.1,47.5,0.09,0.14,0.43
+A window late,36.5,30.4,0.02,1.61,35.7,27.5,0.05,0.07,
+"Late, kept to end",36.5,31.3,0.02,2.29,43.0,38.0,0.07,0.09,
+z-score,,33.2,0.05,,,48.8,0.15,,0.43
+Novelty rule,,8.8,0.00,,,0.0,0.00,,8.94
+Beta-binomial arm,,10.4,0.00,,,0.0,0.00,,0.52
+"Two-path rule, post hoc",47.2,32.7,0.05,2.58,48.1,47.5,0.09,0.14,8.94

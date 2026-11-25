@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Check r53 numerical table cells against committed reductions, without raw data.
+"""Check current manuscript numerical cells against saved reductions, without raw data.
 
-Checks Tables III, IV (primary timing rows), V (six registered configurations),
-VI and VII. Additional post hoc aggregates come from the handoff.
+Checks calibration floors, real-attack primary timing rows, the six registered
+configurations, generated scopes and trigger comparisons, using table labels.
+Additional post hoc aggregates come from the handoff.
 This replaces the audit tied to the superseded manuscript; Git preserves it.
 """
 import argparse
@@ -20,7 +21,8 @@ from export_tables import extract
 
 
 def audit():
-    tables = {t['label']: t['rows'] for t in extract()['tables']}
+    extracted = extract()
+    tables = {t['label']: t['rows'] for t in extracted['tables']}
     p = json.loads((R / 'production_tables.json').read_text())
     b = json.loads((R / 'production_tables_block.json').read_text())
     fb = json.loads((R / 'floor_bands.json').read_text())
@@ -40,7 +42,7 @@ def audit():
     def pct(value, digits=1):
         return 'n/a' if value is None else f'{value*100:.{digits}f}'
 
-    # III: median per-day floors; beta shared floors use exact beta-binomial tails.
+    # Calibration floors; beta shared floors use exact beta-binomial tails.
     folds = sorted(next(iter(p['floor']['base'].values())))
     folds = [day for day in folds if day not in p['folds'].get('fresh', [])] if isinstance(p['folds'], dict) else folds
     # The held-out day is the last of the initial six evaluation folds.
@@ -57,7 +59,7 @@ def audit():
         values += [f'{floor("od",e,"new"):.0f}/{floor("xfit_od",e,"new"):.0f}', f'{exact("od",e):.0f}/{exact("xfit_od",e):.0f}']
         cells('tab:floor', i, 1, values)
 
-    # IV: three timing rows, two attacks, four metrics, independently recorded.
+    # Real attacks: three timing rows, two attacks, four recorded metrics.
     timing = json.loads((R/'posthoc/e5_delay_modes.json').read_text())
     for i, mode in enumerate(['same', 'next', 'kept_next']):
         values = []
@@ -66,7 +68,7 @@ def audit():
             values += [pct(row['requests']), pct(row['pairs']), pct(row['legit'],2), pct(row['edge_label_legit'],2)]
         cells('tab:real', i, 1, values)
 
-    # V: E1-only arm has explicitly uncomputed pooled cells in the manuscript.
+    # Reference variants: E1-only arm has explicitly uncomputed pooled cells.
     configs = [('fleets','union|origins'), ('base','zcal|origins'), ('base','enrichment|omega'),
                ('fleets','unseen|none'), ('xfit_od','union|seasonal'), ('fleets','union|none')]
     for i, (run, key) in enumerate(configs):
@@ -83,7 +85,7 @@ def audit():
         else:
             cells('tab:block', i, 1, values)
 
-    # VI: generated scopes, all six scenarios and all six metrics.
+    # Generated scopes: all six scenarios and all six metrics.
     with (R/'unseen_synth_summary.csv').open() as f:
         u = list(csv.DictReader(f))
     def value(mode, stacks, adv, method, metric):
@@ -96,7 +98,7 @@ def audit():
         values += [pct(value(mode,m,adv,method,'recall')) for method in ['modal','zscore','unseen']]
         cells('tab:symbolic',i,1,values)
 
-    # VII: populations and periods follow the table note, including novelty unions.
+    # Trigger comparisons: populations and periods follow the table note.
     for i, (gate,run,scope) in enumerate((g,r,s) for g in ['origins','seasonal','none'] for r,s in [('fleets','union'),('xfit_od','union'),('fleets','unseen')]):
         key=f'{scope}|{gate}'
         t1=td[run]['per_endpoint']['E1'][key]; f1=fd[run]['per_endpoint']['E1'][key]
@@ -104,9 +106,11 @@ def audit():
         values=[pct(v,2) for v in rates]+[pct(t1['new:x0.1']['blocked']),pct(f1['new:x0.1']['blocked']),pct(t1['shared:x0.1']['blocked']),pct(td[run]['all'][key]['flash1000']),pct(td[run]['all'][key]['clean_collateral_median'])]
         cells('tab:triggers',i,2,values)
 
-    return {'revision':'r53','checked_cells':len(checks),'mismatches':failures,
-            'coverage':['Table III: all numerical cells','Table IV: 24 primary timing cells from handoff aggregates','Table V: numeric cells of the six pre-registered rows','Table VI: all numerical cells','Table VII: all numerical cells'],
-            'gaps':['Table IV: alternative configuration rows and clean-day FA not independently audited here','Table V: two-path row and E1-only footnote not independently audited here','Prose and descriptive Tables I/II are not experimental numeric checks; additional post hoc aggregates are available separately'],
+    return {'revision':'working','source':extracted['source'],
+            'source_sha256':extracted['source_sha256'],
+            'checked_cells':len(checks),'mismatches':failures,
+            'coverage':['tab:floor: all numerical cells','tab:real: 24 primary timing cells from handoff aggregates','tab:block: numeric cells of the six pre-registered rows','tab:symbolic: all numerical cells','tab:triggers: all numerical cells'],
+            'gaps':['tab:real: alternative configuration rows and clean-day FA not independently audited here','tab:block: two-path row and E1-only footnote not independently audited here','The overview, prose and descriptive tables are not covered by these 217 checks; additional post hoc aggregates are available separately'],
             'checks':checks}
 
 
@@ -115,7 +119,8 @@ def main():
     result=audit()
     if args.out:
         args.out.parent.mkdir(parents=True,exist_ok=True);args.out.write_text(json.dumps(result,indent=2)+'\n')
-    print(f"r53: {result['checked_cells']} numerical cells checked; {len(result['mismatches'])} mismatches")
+    print(f"{result['source']}: {result['checked_cells']} numerical cells checked; {len(result['mismatches'])} mismatches")
+    print('Source SHA-256:',result['source_sha256'])
     for failure in result['mismatches']: print(failure)
     for gap in result['gaps']: print('Not audited:',gap)
     raise SystemExit(bool(result['mismatches']))

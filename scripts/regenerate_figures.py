@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run only the two figure functions used in r53, without changing frozen files."""
+"""Regenerate the two manuscript figures in a separate build directory."""
 import argparse
 import importlib.util
 from pathlib import Path

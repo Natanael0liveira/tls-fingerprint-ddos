@@ -1,4 +1,4 @@
-# Glossary and configuration map (r53)
+# Glossary and configuration map
 
 | Term | Meaning in the paper |
 |---|---|
@@ -31,6 +31,8 @@
 | No-trigger arm | None, E1 only | Binomial union novelty | Exempt |
 | Two-path rule | None for novelty; origin count for binomial | Novelty plus gated binomial | As specified in Table II |
 
-The first six configurations were fixed for the prospective evaluation. The two-path rule was derived post hoc and fixed before E5 was examined. The held-out-day protocol fixed only the primary and base rule. Table VII's binomial and beta-binomial scopes include novelty; Table VI evaluates scopes alone on generated traffic.
+The first six configurations were fixed for the prospective evaluation. The two-path rule was derived post hoc and fixed before E5 was examined. The held-out-day protocol fixed only the primary and base rule. Table VIII's binomial and beta-binomial scopes include novelty; Table VII evaluates scopes alone on generated traffic.
 
 Code identifiers predate the final terminology: `unseen` means novelty, `union` means test union novelty, `fleets` is the run with fleet exemption, and `xfit_od` is the cross-fitted beta-binomial run. `fresh_day` denotes the held-out day. These identifiers are retained to preserve existing results.
+
+The per-fingerprint origin cap in Table III is a separate exploratory comparison. It challenges origins above each fingerprint’s calibration maximum (at least four), rather than blocking all clients on selected fingerprints.

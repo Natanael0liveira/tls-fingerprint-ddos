@@ -1,0 +1,5 @@
+endpoint,median_origins,lambda_binomial,lambda_beta,primary_new_in_sample/cross_fitted,primary_shared_in_sample/cross_fitted,beta_new_in_sample/cross_fitted,beta_shared_in_sample/cross_fitted
+"E1, beacons","2,983",10^{-21},10^{-4},139/139,254/286,85/139,86/167
+"E2, web console",62,10^{-73},10^{-2},139/139,1090/1041,56/114,84/168
+"E3, API",41,10^{-11},10^{-2},139/139,168/227,56/114,56/140
+"E4, sign-on",20,10^{-4},10^{-2},84/84,84/114,56/56,84/84

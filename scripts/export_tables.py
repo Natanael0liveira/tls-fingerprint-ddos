@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export r53 tables faithfully; transcription is not experimental reproduction."""
+"""Export manuscript tables faithfully; transcription is not experimental reproduction."""
 import argparse
 import csv
 import hashlib
@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'papers/http-session-noms/article.tex'
-DEST = ROOT / 'experiments/sprint-6-noms/results/r53'
+DEST = ROOT / 'experiments/sprint-6-noms/results/manuscript'
 LABELS = ['related', 'configs', 'floor', 'real', 'block', 'symbolic', 'triggers']
 HEADERS = [
     ['work', 'selection', 'question'],
@@ -21,6 +21,9 @@ HEADERS = [
     ['scenario', 'binomial_recall_pct', 'binomial_collateral_pct', 'binomial_F1', 'modal_recall_pct', 'zscore_recall_pct', 'novelty_recall_pct'],
     ['trigger', 'scope', 'E1_FA_dev_pct', 'E1_FA_held_pct', 'max_E2_E4_FA_dev_pct', 'max_E2_E4_FA_held_pct', 'E1_new_dev_pct', 'E1_new_held_pct', 'E1_shared_dev_pct', 'crowds_dev_pct', 'median_collateral_per_FA_dev_pct'],
 ]
+SPECS = dict(zip(LABELS, HEADERS))
+SPECS['overview'] = ['policy', 'E1_0.1x_bots_pct', 'clean_action_windows_pct',
+                     'median_legitimate_exposure_per_action_pct', 'fallback_origin_windows_pct']
 
 
 def plain(s):
@@ -36,8 +39,18 @@ def extract():
     source = re.sub(r'(?<!\\)%[^\n]*', '', source)
     blocks = re.findall(r'\\begin\{table\*?\}.*?\\end\{table\*?\}', source, re.S)
     tables = []
-    for index, (label, headers) in enumerate(zip(LABELS, HEADERS), 1):
-        block = next(b for b in blocks if '\\label{tab:' + label + '}' in b)
+    seen = set()
+    for table_number, block in enumerate(blocks, 1):
+        match = re.search(r'\\label\{tab:([^}]+)\}', block)
+        if not match or match.group(1) not in SPECS:
+            raise ValueError(f'Table {table_number}: unknown or missing table label')
+        label = match.group(1)
+        if label in seen:
+            raise ValueError(f'Duplicate table label: {label}')
+        seen.add(label)
+        headers = SPECS[label]
+        if label == 'related' and r'\textbf{Evaluated on}' in block:
+            headers = ['work', 'selection', 'evaluated_on', 'question']
         data = block.split(r'\midrule', 1)[1].split(r'\bottomrule', 1)[0]
         rows, groups = [], []
         group = ''
@@ -50,19 +63,21 @@ def extract():
                 continue
             cells = [plain(x) for x in line.strip()[:-2].split('&')]
             if len(cells) != len(headers):
-                raise ValueError(f'Table {index}: expected {len(headers)} cells, got {cells}')
+                raise ValueError(f'Table {table_number}: expected {len(headers)} cells, got {cells}')
             if label == 'triggers':
                 trigger = cells[0] or trigger
                 cells[0] = trigger
             rows.append(cells)
             groups.append(group)
         note = re.search(r'\\footnotesize (.*?)\\end\{minipage\}', block, re.S)
-        tables.append({'number': index, 'label': 'tab:' + label,
+        tables.append({'number': table_number, 'label': 'tab:' + label,
                        'caption': re.search(r'\\caption\{([^}]*)\}', block).group(1),
                        'columns': headers, 'rows': rows, 'row_groups_tex': groups,
                        'note_tex': note.group(1).strip() if note else '',
                        'source_tex': block})
-    return {'revision': 'r53', 'kind': 'manuscript_transcription',
+    if seen != set(SPECS):
+        raise ValueError(f'Missing tables: {sorted(set(SPECS) - seen)}')
+    return {'revision': 'noms2027-submission', 'kind': 'manuscript_transcription',
             'source': str(SOURCE.relative_to(ROOT)),
             'source_sha256': hashlib.sha256(SOURCE.read_bytes()).hexdigest(), 'tables': tables}
 
@@ -83,7 +98,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    DEST.mkdir(parents=True, exist_ok=True)
+    if not args.check:
+        DEST.mkdir(parents=True, exist_ok=True)
     bad = []
     for name, content in outputs().items():
         path = DEST / name
@@ -94,7 +110,7 @@ def main():
             path.write_bytes(content.encode())
     if bad:
         raise SystemExit('Stale table exports: ' + ', '.join(bad))
-    print('Seven r53 tables: ' + ('exports match frozen TeX' if args.check else 'exported with notes and provenance'))
+    print('Eight current tables: ' + ('exports match submission TeX' if args.check else 'exported with notes and provenance'))
 
 
 if __name__ == '__main__':

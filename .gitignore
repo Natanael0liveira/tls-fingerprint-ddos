@@ -94,5 +94,9 @@ docs/writing-style.md
 # LaTeX scratch
 texput.log
 
-# Immutable delivery is published under papers/http-session-noms/.
-entrega-NOMS2027-r53/
+# Private history, reviews and original handoffs remain local.
+archive/local/
+
+# Current PDFs and upload bundles are local build products.
+submissions/*/article.pdf
+submissions/*/*.zip

@@ -1,0 +1,705 @@
+{
+  "revision": "noms2027-submission",
+  "kind": "manuscript_transcription",
+  "source": "papers/http-session-noms/article.tex",
+  "source_sha256": "faea129198a1a0cd1907536a8e13ac6548305837c89a166d8073755ecd16dbdc",
+  "tables": [
+    {
+      "number": 1,
+      "label": "tab:related",
+      "caption": "Representative approaches and their main focus",
+      "columns": [
+        "work",
+        "selection",
+        "evaluated_on",
+        "question"
+      ],
+      "rows": [
+        [
+          "Attack detectors~\\cite{kemp2023approach,belcastro2025klage}",
+          "None: an attack verdict",
+          "Labeled datasets",
+          "Is this traffic an attack?"
+        ],
+        [
+          "Aggregate filters~\\cite{mahajan2002pushback,alcoz2022accturbo,soldo2012filtering}",
+          "Header-field aggregates or source prefixes",
+          "Simulation and testbeds",
+          "Which aggregates or prefixes to limit?"
+        ],
+        [
+          "Anomaly extraction~\\cite{silveira2010urca,brauckhoff2009extraction}",
+          "Over-represented feature values",
+          "Backbone traces",
+          "Which values explain an anomaly?"
+        ],
+        [
+          "PacketScore~\\cite{kim2006packetscore}",
+          "Packets scored against a nominal profile",
+          "Trace-driven simulation",
+          "Which packets to drop under overload?"
+        ],
+        [
+          "JA3 report~\\cite{kobayashi2024ja3}",
+          "HTTPS traffic using JA3",
+          "A security operations center",
+          "Can JA3 mitigate HTTPS floods?"
+        ],
+        [
+          "Anti-bot evaluations~\\cite{aminazad2020webrunner,vastel2020fpcrawlers}",
+          "None: bot detection is tested",
+          "Commercial services, live websites",
+          "How do bots evade detection?"
+        ],
+        [
+          "This work",
+          "New or over-represented JA4 at the endpoint",
+          "Production endpoints, injected and real attacks",
+          "What coverage and collateral does filtering yield?"
+        ]
+      ],
+      "row_groups_tex": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "note_tex": "",
+      "source_tex": "\\begin{table*}[t]\n\\centering\n\\caption{Representative approaches and their main focus}\n\\label{tab:related}\n\\scriptsize\n\\setlength{\\tabcolsep}{3pt}\n\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}llll@{}}\n\\toprule\n\\textbf{Work} & \\textbf{Selection} & \\textbf{Evaluated on} & \\textbf{Main question} \\\\\n\\midrule\nAttack detectors~\\cite{kemp2023approach,belcastro2025klage} & None: an attack verdict & Labeled datasets & Is this traffic an attack? \\\\\nAggregate filters~\\cite{mahajan2002pushback,alcoz2022accturbo,soldo2012filtering} & Header-field aggregates or source prefixes & Simulation and testbeds & Which aggregates or prefixes to limit? \\\\\nAnomaly extraction~\\cite{silveira2010urca,brauckhoff2009extraction} & Over-represented feature values & Backbone traces & Which values explain an anomaly? \\\\\nPacketScore~\\cite{kim2006packetscore} & Packets scored against a nominal profile & Trace-driven simulation & Which packets to drop under overload? \\\\\nJA3 report~\\cite{kobayashi2024ja3} & HTTPS traffic using JA3 & A security operations center & Can JA3 mitigate HTTPS floods? \\\\\nAnti-bot evaluations~\\cite{aminazad2020webrunner,vastel2020fpcrawlers} & None: bot detection is tested & Commercial services, live websites & How do bots evade detection? \\\\\nThis work & New or over-represented JA4 at the endpoint & Production endpoints, injected and real attacks & What coverage and collateral does filtering yield? \\\\\n\\bottomrule\n\\end{tabular*}\n\\end{table*}"
+    },
+    {
+      "number": 2,
+      "label": "tab:configs",
+      "caption": "The calibrated configurations on production traffic",
+      "columns": [
+        "configuration",
+        "trigger",
+        "scope",
+        "fleets"
+      ],
+      "rows": [
+        [
+          "Primary",
+          "origins",
+          "binomial union novelty",
+          "exempt"
+        ],
+        [
+          "z-score",
+          "origins",
+          "z > its p99",
+          "no"
+        ],
+        [
+          "Base rule",
+          "Omega",
+          "binomial",
+          "no"
+        ],
+        [
+          "Novelty rule",
+          "none",
+          "novelty",
+          "no"
+        ],
+        [
+          "Beta-binomial arm",
+          "seasonal",
+          "beta-bin. union novelty",
+          "no"
+        ],
+        [
+          "No-trigger arm, E1 only",
+          "none",
+          "binomial union novelty",
+          "exempt"
+        ],
+        [
+          "Two-path rule",
+          "none / origins",
+          "novelty / binomial",
+          "exempt"
+        ]
+      ],
+      "row_groups_tex": [
+        "\\multicolumn{4}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\",
+        "\\multicolumn{4}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\",
+        "\\multicolumn{4}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\",
+        "\\multicolumn{4}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\",
+        "\\multicolumn{4}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\",
+        "\\multicolumn{4}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\",
+        "\\multicolumn{4}{@{}l}{\\textit{Post hoc}} \\\\"
+      ],
+      "note_tex": "The held-out day's protocol fixed only the primary and the base rule. $^{\\dagger}$Cross-fitted. $\\Omega$: an earlier design, mostly counting volume (Appendix~\\ref{app:window}).",
+      "source_tex": "\\begin{table}[!ht]\n\\centering\n\\caption{The calibrated configurations on production traffic}\n\\label{tab:configs}\n\\scriptsize\n\\setlength{\\tabcolsep}{3pt}\n\\begin{tabular}{@{}llll@{}}\n\\toprule\n\\textbf{Configuration} & \\textbf{Trigger} & \\textbf{Scope} & \\textbf{Fleets} \\\\\n\\midrule\n\\multicolumn{4}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\\nPrimary                       & origins        & binomial $\\cup$ novelty    & exempt \\\\\n$z$-score                     & origins        & $z >$ its p99              & no \\\\\nBase rule                     & $\\Omega$       & binomial                   & no \\\\\n\\rowcolor[gray]{0.90}\n\\multicolumn{4}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\\n\\rowcolor[gray]{0.90}\nNovelty rule                  & none           & novelty                    & no \\\\\n\\rowcolor[gray]{0.90}\nBeta-binomial arm$^{\\dagger}$ & seasonal       & beta-bin.\\ $\\cup$ novelty  & no \\\\\n\\rowcolor[gray]{0.90}\nNo-trigger arm, E1 only       & none           & binomial $\\cup$ novelty    & exempt \\\\\n\\multicolumn{4}{@{}l}{\\textit{Post hoc}} \\\\\nTwo-path rule                 & none / origins & novelty / binomial         & exempt \\\\\n\\bottomrule\n\\end{tabular}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize The held-out day's protocol fixed only the primary and the base rule. $^{\\dagger}$Cross-fitted. $\\Omega$: an earlier design, mostly counting volume (Appendix~\\ref{app:window}).\\end{minipage}\n\\end{table}"
+    },
+    {
+      "number": 3,
+      "label": "tab:overview",
+      "caption": "What the policies deliver over the 14-day prospective period",
+      "columns": [
+        "policy",
+        "E1_0.1x_bots_pct",
+        "clean_action_windows_pct",
+        "median_legitimate_exposure_per_action_pct",
+        "fallback_origin_windows_pct"
+      ],
+      "rows": [
+        [
+          "Primary",
+          "2.9",
+          "0.19",
+          "39.0",
+          "0.6"
+        ],
+        [
+          "Novelty, no trigger",
+          "89.6",
+          "0.00",
+          "n/a",
+          "--"
+        ],
+        [
+          "Origin cap (post hoc)",
+          "57",
+          "1.5",
+          "0.7",
+          "--"
+        ]
+      ],
+      "row_groups_tex": [
+        "",
+        "",
+        ""
+      ],
+      "note_tex": "In \\%, E1--E4. Bots: E1's $0.1\\times$ botnet on new fingerprints ($\\approx300$ bots); filters block, the cap challenges. Clean: windows with an action. Legit.: median legitimate-origin share in those windows. Fallback: challenged or rate-limited clean origin-windows. Cap: exploratory; other rows: pre-registered. n/a: no false alarm in E1--E4; --: no fallback.",
+      "source_tex": "\\begin{table}[!ht]\n\\centering\n\\caption{What the policies deliver over the 14-day prospective period}\n\\label{tab:overview}\n\\footnotesize\n\\setlength{\\tabcolsep}{2.3pt}\n\\begin{tabular*}{\\columnwidth}{@{\\extracolsep{\\fill}}lrrrr@{}}\n\\toprule\n\\textbf{Policy} & \\textbf{Bots} & \\textbf{Clean} & \\textbf{Legit.} & \\textbf{Fallback} \\\\\n\\midrule\nPrimary                  & 2.9  & 0.19 & 39.0 & 0.6 \\\\\nNovelty, no trigger      & 89.6 & 0.00 & n/a  & -- \\\\\nOrigin cap (post hoc)    & 57   & 1.5  & 0.7  & -- \\\\\n\\bottomrule\n\\end{tabular*}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize In \\%, E1--E4. Bots: E1's $0.1\\times$ botnet on new fingerprints ($\\approx300$ bots); filters block, the cap challenges. Clean: windows with an action. Legit.: median legitimate-origin share in those windows. Fallback: challenged or rate-limited clean origin-windows. Cap: exploratory; other rows: pre-registered. n/a: no false alarm in E1--E4; --: no fallback.\\end{minipage}\n\\end{table}"
+    },
+    {
+      "number": 4,
+      "label": "tab:floor",
+      "caption": "Calibration floor, in attackers per window",
+      "columns": [
+        "endpoint",
+        "median_origins",
+        "lambda_binomial",
+        "lambda_beta",
+        "primary_new_in_sample/cross_fitted",
+        "primary_shared_in_sample/cross_fitted",
+        "beta_new_in_sample/cross_fitted",
+        "beta_shared_in_sample/cross_fitted"
+      ],
+      "rows": [
+        [
+          "E1, beacons",
+          "2,983",
+          "10^{-21}",
+          "10^{-4}",
+          "139/139",
+          "254/286",
+          "85/139",
+          "86/167"
+        ],
+        [
+          "E2, web console",
+          "62",
+          "10^{-73}",
+          "10^{-2}",
+          "139/139",
+          "1090/1041",
+          "56/114",
+          "84/168"
+        ],
+        [
+          "E3, API",
+          "41",
+          "10^{-11}",
+          "10^{-2}",
+          "139/139",
+          "168/227",
+          "56/114",
+          "56/140"
+        ],
+        [
+          "E4, sign-on",
+          "20",
+          "10^{-4}",
+          "10^{-2}",
+          "84/84",
+          "84/114",
+          "56/56",
+          "84/84"
+        ]
+      ],
+      "row_groups_tex": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "note_tex": "Floors: botnet size from which the scope alone selects a typical stack of a 25-stack botnet, in sample / cross-fitted, development-day medians. Table~\\ref{tab:block} uses the primary in sample and the arm cross-fitted. $n_0$: median origins per window. $\\lambda_e$ in sample. $^{*}$Added after the held-out day, as was cross-fitting.",
+      "source_tex": "\\begin{table}[!h]\n\\centering\n\\caption{Calibration floor, in attackers per window}\n\\label{tab:floor}\n\\scriptsize\n\\setlength{\\tabcolsep}{2.2pt}\n\\begin{tabular}{@{}lccccccc@{}}\n\\toprule\n & & \\multicolumn{2}{c}{$\\lambda_e$} & \\multicolumn{2}{c}{\\textbf{Primary}} & \\multicolumn{2}{c}{\\textbf{Beta-binomial arm}$^{*}$} \\\\\n\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\\cmidrule(l){7-8}\n\\textbf{Endpoint} & $n_0$ & bin. & beta$^{*}$ & new & shared & new & shared \\\\\n\\midrule\nE1, beacons     & 2,983  & $10^{-21}$ & $10^{-4}$ & 139/139 & 254/286 & 85/139 & 86/167 \\\\\nE2, web console & 62      & $10^{-73}$ & $10^{-2}$ & 139/139 & 1090/1041 & 56/114 & 84/168 \\\\\nE3, API         & 41      & $10^{-11}$ & $10^{-2}$ & 139/139 & 168/227 & 56/114 & 56/140 \\\\\nE4, sign-on     & 20      & $10^{-4}$ & $10^{-2}$ & 84/84 & 84/114 & 56/56 & 84/84 \\\\\n\\bottomrule\n\\end{tabular}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize Floors: botnet size from which the scope alone selects a typical stack of a 25-stack botnet, in sample / cross-fitted, development-day medians. Table~\\ref{tab:block} uses the primary in sample and the arm cross-fitted. $n_0$: median origins per window. $\\lambda_e$ in sample. $^{*}$Added after the held-out day, as was cross-fitting.\\end{minipage}\n\\end{table}"
+    },
+    {
+      "number": 5,
+      "label": "tab:block",
+      "caption": "Prospective results for reference configurations and variants",
+      "columns": [
+        "configuration",
+        "FA_all_pct",
+        "FA_E1_pct",
+        "FA_max_E2_E4_pct",
+        "median_collateral_per_FA_pct",
+        "crowds_pct",
+        "E1_0.1x_new_pct",
+        "E1_0.1x_shared_pct",
+        "pooled_100_new_pct",
+        "pooled_100_shared_pct"
+      ],
+      "rows": [
+        [
+          "Primary",
+          "0.19",
+          "0.00",
+          "0.42",
+          "39.0",
+          "18.8",
+          "2.9",
+          "2.4",
+          "36.8",
+          "22.1"
+        ],
+        [
+          "z-score",
+          "0.12",
+          "0.00",
+          "0.30",
+          "40.1",
+          "3.0",
+          "3.0",
+          "2.6",
+          "56.2",
+          "26.9"
+        ],
+        [
+          "Base rule",
+          "0.26",
+          "0.00",
+          "0.69",
+          "46.6",
+          "16.8",
+          "0.0",
+          "0.0",
+          "29.4",
+          "22.0"
+        ],
+        [
+          "Novelty rule",
+          "0.00",
+          "0.00",
+          "0.00",
+          "n/a",
+          "2.7",
+          "89.6",
+          "0.0",
+          "43.2",
+          "0.0"
+        ],
+        [
+          "Beta-binomial arm",
+          "0.12",
+          "0.35",
+          "0.05",
+          "65.7",
+          "33.5",
+          "11.8",
+          "11.4",
+          "61.0",
+          "39.7"
+        ],
+        [
+          "No-trigger arm",
+          "--",
+          "1.56",
+          "--",
+          "--",
+          "--",
+          "89.6",
+          "67.7",
+          "--",
+          "--"
+        ],
+        [
+          "Two-path rule",
+          "0.19",
+          "0.00",
+          "0.42",
+          "39.0",
+          "18.8",
+          "89.6",
+          "2.4",
+          "52.1",
+          "22.1"
+        ]
+      ],
+      "row_groups_tex": [
+        "\\multicolumn{10}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Post hoc: the two-path rule, the novelty and primary rows combined}} \\\\"
+      ],
+      "note_tex": "In \\%, 16,103 clean windows, calibrated on all earlier days, in sample except $^{\\dagger}$cross-fitted. E2--E4: their highest. FA coll. (median per false alarm), Crowds, 100 attackers: pooled. E1, $0.1\\times$: about 300 attackers. Bold: above the $1\\%$ budget; n/a: no false alarm; --: not computed. $^{a}$E1 only: FA coll. 4.3, Crowds 1.2, 100 attackers 43.4 and 4.5.",
+      "source_tex": "\\begin{table}[!ht]\n\\centering\n\\caption{Prospective results for reference configurations and variants}\n\\label{tab:block}\n\\scriptsize\n\\setlength{\\tabcolsep}{1.8pt}\n\\begin{tabular}{@{}lccccccccc@{}}\n\\toprule\n & \\multicolumn{3}{c}{\\textbf{False alarms}} & & & \\multicolumn{2}{c}{\\textbf{E1, $0.1\\times$}} & \\multicolumn{2}{c}{\\textbf{100 attackers}} \\\\\n\\cmidrule(lr){2-4}\\cmidrule(lr){7-8}\\cmidrule(lr){9-10}\n\\textbf{Configuration} & all & E1 & E2--E4 & \\textbf{FA coll.} & \\textbf{Crowds} & New & Shared & New & Shared \\\\\n\\midrule\n\\multicolumn{10}{@{}l}{\\textit{Fixed on the development days: the primary (test 1), then two references}} \\\\\nPrimary                       & 0.19 & 0.00 & 0.42          & 39.0 & 18.8 & 2.9  & 2.4  & 36.8 & 22.1 \\\\\n$z$-score                     & 0.12 & 0.00 & 0.30          & 40.1 & 3.0  & 3.0  & 2.6  & 56.2 & 26.9 \\\\\nBase rule                     & 0.26 & 0.00 & 0.69          & 46.6 & 16.8 & 0.0  & 0.0  & 29.4 & 22.0 \\\\\n\\rowcolor[gray]{0.90}\n\\multicolumn{10}{@{}l}{\\textit{Pre-registered after the held-out day: the novelty rule and two arms (tests 2 and 3)}} \\\\\n\\rowcolor[gray]{0.90}\nNovelty rule                  & 0.00 & 0.00 & 0.00          & n/a  & 2.7  & 89.6 & 0.0  & 43.2 & 0.0 \\\\\n\\rowcolor[gray]{0.90}\nBeta-binomial arm$^{\\dagger}$ & 0.12 & 0.35 & 0.05          & 65.7 & 33.5 & 11.8 & 11.4 & 61.0 & 39.7 \\\\\n\\rowcolor[gray]{0.90}\nNo-trigger arm$^{a}$          & --   & \\textbf{1.56} & --    & --   & --   & 89.6 & 67.7 & --   & -- \\\\\n\\multicolumn{10}{@{}l}{\\textit{Post hoc: the two-path rule, the novelty and primary rows combined}} \\\\\nTwo-path rule                 & 0.19 & 0.00 & 0.42          & 39.0 & 18.8 & 89.6 & 2.4  & 52.1 & 22.1 \\\\\n\\bottomrule\n\\end{tabular}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize In \\%, 16,103 clean windows, calibrated on all earlier days, in sample except $^{\\dagger}$cross-fitted. E2--E4: their highest. FA coll. (median per false alarm), Crowds, 100 attackers: pooled. E1, $0.1\\times$: about 300 attackers. Bold: above the $1\\%$ budget; n/a: no false alarm; --: not computed. $^{a}$E1 only: FA coll. 4.3, Crowds 1.2, 100 attackers 43.4 and 4.5.\\end{minipage}\n\\end{table}"
+    },
+    {
+      "number": 6,
+      "label": "tab:real",
+      "caption": "Two real attacks at a customer's site (E5), post hoc",
+      "columns": [
+        "filter",
+        "attack1_requests_pct",
+        "attack1_attackers_pct",
+        "attack1_legitimate_pct",
+        "attack1_alternative_legitimate_pct",
+        "attack2_requests_pct",
+        "attack2_attackers_pct",
+        "attack2_legitimate_pct",
+        "attack2_alternative_legitimate_pct",
+        "clean_FA_pct"
+      ],
+      "rows": [
+        [
+          "Selecting window",
+          "47.2",
+          "32.7",
+          "0.05",
+          "2.58",
+          "48.1",
+          "47.5",
+          "0.09",
+          "0.14",
+          "0.43"
+        ],
+        [
+          "A window late",
+          "36.5",
+          "30.4",
+          "0.02",
+          "1.61",
+          "35.7",
+          "27.5",
+          "0.05",
+          "0.07",
+          ""
+        ],
+        [
+          "Late, kept to end",
+          "36.5",
+          "31.3",
+          "0.02",
+          "2.29",
+          "43.0",
+          "38.0",
+          "0.07",
+          "0.09",
+          ""
+        ],
+        [
+          "z-score",
+          "",
+          "33.2",
+          "0.05",
+          "",
+          "",
+          "48.8",
+          "0.15",
+          "",
+          "0.43"
+        ],
+        [
+          "Novelty rule",
+          "",
+          "8.8",
+          "0.00",
+          "",
+          "",
+          "0.0",
+          "0.00",
+          "",
+          "8.94"
+        ],
+        [
+          "Beta-binomial arm",
+          "",
+          "10.4",
+          "0.00",
+          "",
+          "",
+          "0.0",
+          "0.00",
+          "",
+          "0.52"
+        ],
+        [
+          "Two-path rule, post hoc",
+          "47.2",
+          "32.7",
+          "0.05",
+          "2.58",
+          "48.1",
+          "47.5",
+          "0.09",
+          "0.14",
+          "8.94"
+        ]
+      ],
+      "row_groups_tex": [
+        "\\multicolumn{10}{@{}l}{\\textit{Primary configuration}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Primary configuration}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Primary configuration}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Other configurations, in the selecting window}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Other configurations, in the selecting window}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Other configurations, in the selecting window}} \\\\",
+        "\\multicolumn{10}{@{}l}{\\textit{Other configurations, in the selecting window}} \\\\"
+      ],
+      "note_tex": "In \\%, summed over each attack's windows. Req.: requests on the selected fingerprints. Att., Leg.: attackers' and legitimate origins blocked, Leg.$^{e}$ when only edge-blocked addresses count as attackers. FA: false alarms in E5's 1,152 windows of four attack-free days, bold above the $1\\%$ budget.",
+      "source_tex": "\\begin{table}[t]\n\\centering\n\\caption{Two real attacks at a customer's site (E5), post hoc}\n\\label{tab:real}\n\\scriptsize\n\\setlength{\\tabcolsep}{2.0pt}\n\\begin{tabular}{@{}lccccccccc@{}}\n\\toprule\n & \\multicolumn{4}{c}{\\textbf{Attack 1}} & \\multicolumn{4}{c}{\\textbf{Attack 2}} & \\\\\n\\cmidrule(lr){2-5}\\cmidrule(lr){6-9}\n\\textbf{Filter} & Req. & Att. & Leg. & Leg.$^{e}$ & Req. & Att. & Leg. & Leg.$^{e}$ & \\textbf{FA} \\\\\n\\midrule\n\\multicolumn{10}{@{}l}{\\textit{Primary configuration}} \\\\\nSelecting window    & 47.2 & 32.7 & 0.05 & 2.58 & 48.1 & 47.5 & 0.09 & 0.14 & 0.43 \\\\\nA window late       & 36.5 & 30.4 & 0.02 & 1.61 & 35.7 & 27.5 & 0.05 & 0.07 & \\\\\nLate, kept to end   & 36.5 & 31.3 & 0.02 & 2.29 & 43.0 & 38.0 & 0.07 & 0.09 & \\\\\n\\rowcolor[gray]{0.90}\n\\multicolumn{10}{@{}l}{\\textit{Other configurations, in the selecting window}} \\\\\n\\rowcolor[gray]{0.90}\n$z$-score                         & & 33.2 & 0.05 & & & 48.8 & 0.15 & & 0.43 \\\\\n\\rowcolor[gray]{0.90}\nNovelty rule                      & & 8.8  & 0.00 & & & 0.0  & 0.00 & & \\textbf{8.94} \\\\\n\\rowcolor[gray]{0.90}\nBeta-binomial arm                 & & 10.4 & 0.00 & & & 0.0  & 0.00 & & 0.52 \\\\\n\\rowcolor[gray]{0.90}\nTwo-path rule, post hoc & 47.2 & 32.7 & 0.05 & 2.58 & 48.1 & 47.5 & 0.09 & 0.14 & \\textbf{8.94} \\\\\n\\bottomrule\n\\end{tabular}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize In \\%, summed over each attack's windows. Req.: requests on the selected fingerprints. Att., Leg.: attackers' and legitimate origins blocked, Leg.$^{e}$ when only edge-blocked addresses count as attackers. FA: false alarms in E5's 1,152 windows of four attack-free days, bold above the $1\\%$ budget.\\end{minipage}\n\\end{table}"
+    },
+    {
+      "number": 7,
+      "label": "tab:symbolic",
+      "caption": "Each scope alone on generated traffic",
+      "columns": [
+        "scenario",
+        "binomial_recall_pct",
+        "binomial_collateral_pct",
+        "binomial_F1",
+        "modal_recall_pct",
+        "zscore_recall_pct",
+        "novelty_recall_pct"
+      ],
+      "rows": [
+        [
+          "M=1",
+          "89.8%",
+          "0.00%",
+          "0.946",
+          "89.8%",
+          "89.8%",
+          "89.8%"
+        ],
+        [
+          "M=5",
+          "90.0%",
+          "0.00%",
+          "0.948",
+          "0.0%",
+          "90.0%",
+          "90.0%"
+        ],
+        [
+          "M=25",
+          "90.3%",
+          "0.00%",
+          "0.949",
+          "0.0%",
+          "90.3%",
+          "90.3%"
+        ],
+        [
+          "M=100",
+          "38.6%",
+          "0.00%",
+          "0.556",
+          "0.0%",
+          "80.4%",
+          "88.1%"
+        ],
+        [
+          "M=25, shared",
+          "85.4%",
+          "2.23%",
+          "0.910",
+          "0.0%",
+          "89.9%",
+          "0.0%"
+        ],
+        [
+          "M=25, adversarial",
+          "30.4%",
+          "3.78%",
+          "0.452",
+          "3.6%",
+          "57.3%",
+          "0.0%"
+        ]
+      ],
+      "row_groups_tex": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "note_tex": "Recall of each scope alone, capped near $90\\%$ since each bot has a one-off fingerprint with probability $0.1$, and the test's collateral in attack windows (Att.\\ coll.), $K = 1000$ attackers on $M$ stacks, 15 seeds. Others' collateral: modal $39.0\\%$ from $M{=}5$, $z$-score $3.37\\%$ (shared) and $11.3\\%$ (adversarial).",
+      "source_tex": "\\begin{table}[!ht]\n\\centering\n\\caption{Each scope alone on generated traffic}\n\\label{tab:symbolic}\n\\scriptsize\n\\setlength{\\tabcolsep}{1.6pt}\n\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n & \\multicolumn{3}{c}{\\textbf{Binomial test}} & \\multicolumn{3}{c}{\\textbf{Other scopes}} \\\\\n\\cmidrule(lr){2-4}\\cmidrule(l){5-7}\n\\textbf{Scenario} & \\textbf{Recall} & \\textbf{Att.\\ coll.} & \\textbf{$F_1$} & \\textbf{Modal} & \\textbf{$z$-score} & \\textbf{Novelty} \\\\\n\\midrule\n$M{=}1$               & 89.8\\% & 0.00\\% & 0.946 & 89.8\\% & 89.8\\% & 89.8\\% \\\\\n$M{=}5$               & 90.0\\% & 0.00\\% & 0.948 & 0.0\\% & 90.0\\% & 90.0\\% \\\\\n$M{=}25$              & 90.3\\% & 0.00\\% & 0.949 & 0.0\\% & 90.3\\% & 90.3\\% \\\\\n$M{=}100$             & 38.6\\% & 0.00\\% & 0.556 & 0.0\\% & 80.4\\% & 88.1\\% \\\\\n$M{=}25$, shared      & 85.4\\% & 2.23\\% & 0.910 & 0.0\\% & 89.9\\% & 0.0\\% \\\\\n$M{=}25$, adversarial & 30.4\\% & 3.78\\% & 0.452 & 3.6\\% & 57.3\\% & 0.0\\% \\\\\n\\bottomrule\n\\end{tabular}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize Recall of each scope alone, capped near $90\\%$ since each bot has a one-off fingerprint with probability $0.1$, and the test's collateral in attack windows (Att.\\ coll.), $K = 1000$ attackers on $M$ stacks, 15 seeds. Others' collateral: modal $39.0\\%$ from $M{=}5$, $z$-score $3.37\\%$ (shared) and $11.3\\%$ (adversarial).\\end{minipage}\n\\end{table}"
+    },
+    {
+      "number": 8,
+      "label": "tab:triggers",
+      "caption": "The scopes behind each trigger on production traffic",
+      "columns": [
+        "trigger",
+        "scope",
+        "E1_FA_dev_pct",
+        "E1_FA_held_pct",
+        "max_E2_E4_FA_dev_pct",
+        "max_E2_E4_FA_held_pct",
+        "E1_new_dev_pct",
+        "E1_new_held_pct",
+        "E1_shared_dev_pct",
+        "crowds_dev_pct",
+        "median_collateral_per_FA_dev_pct"
+      ],
+      "rows": [
+        [
+          "Origin",
+          "binomial",
+          "0.00",
+          "0.00",
+          "0.28",
+          "0.69",
+          "11.8",
+          "0.0",
+          "7.7",
+          "22.2",
+          "32.9"
+        ],
+        [
+          "Origin",
+          "beta-bin.",
+          "0.14",
+          "0.00",
+          "0.28",
+          "0.00",
+          "11.9",
+          "0.0",
+          "8.3",
+          "10.9",
+          "2.0"
+        ],
+        [
+          "Origin",
+          "novelty",
+          "0.00",
+          "0.00",
+          "0.07",
+          "0.00",
+          "11.8",
+          "0.0",
+          "0.0",
+          "3.4",
+          "3.3"
+        ],
+        [
+          "Seasonal",
+          "binomial",
+          "0.00",
+          "0.00",
+          "2.64",
+          "0.69",
+          "20.4",
+          "15.3",
+          "14.4",
+          "22.3",
+          "35.2"
+        ],
+        [
+          "Seasonal",
+          "beta-bin.",
+          "0.07",
+          "0.00",
+          "0.21",
+          "0.00",
+          "20.4",
+          "15.3",
+          "15.1",
+          "10.9",
+          "16.9"
+        ],
+        [
+          "Seasonal",
+          "novelty",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "20.4",
+          "15.3",
+          "0.0",
+          "3.4",
+          "n/a"
+        ],
+        [
+          "None",
+          "binomial",
+          "0.97",
+          "0.00",
+          "4.38",
+          "1.04",
+          "89.6",
+          "89.7",
+          "61.1",
+          "22.4",
+          "32.6"
+        ],
+        [
+          "None",
+          "beta-bin.",
+          "0.90",
+          "1.74",
+          "1.46",
+          "1.39",
+          "89.7",
+          "90.1",
+          "65.7",
+          "11.0",
+          "6.6"
+        ],
+        [
+          "None",
+          "novelty",
+          "0.28",
+          "0.00",
+          "0.42",
+          "0.35",
+          "89.6",
+          "89.7",
+          "0.0",
+          "3.4",
+          "5.7"
+        ]
+      ],
+      "row_groups_tex": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "note_tex": "In \\%. Dev.: development days. Held: held-out day. E2--E4: highest. Crowds, FA coll.: dev., pooled. New, Shared: E1's $0.1\\times$ botnet. Binomial and beta-bin.\\ include the novelty rule. Origin/binomial, Seasonal/beta-bin.\\ and None/novelty are Table~\\ref{tab:configs}'s primary, beta-binomial arm and novelty rule. $^{\\dagger}$Cross-fitted. $^{*}$Added after the held-out day.",
+      "source_tex": "\\begin{table}[!ht]\n\\centering\n\\caption{The scopes behind each trigger on production traffic}\n\\label{tab:triggers}\n\\scriptsize\n\\setlength{\\tabcolsep}{1.8pt}\n\\begin{tabular}{@{}llccccccccc@{}}\n\\toprule\n & & \\multicolumn{2}{c}{\\textbf{FA, E1}} & \\multicolumn{2}{c}{\\textbf{FA, E2--E4}} & \\multicolumn{2}{c}{\\textbf{New}} & \\textbf{Shared} & & \\\\\n\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\\cmidrule(lr){7-8}\\cmidrule(lr){9-9}\n\\textbf{Trigger} & \\textbf{Scope} & dev. & held & dev. & held & dev. & held & dev. & \\textbf{Crowds} & \\textbf{FA coll.} \\\\\n\\midrule\nOrigin              & binomial               & 0.00 & 0.00 & 0.28 & 0.69 & 11.8 & 0.0  & 7.7  & 22.2 & 32.9 \\\\\n                    & beta-bin.$^{*\\dagger}$ & 0.14 & 0.00 & 0.28 & 0.00 & 11.9 & 0.0  & 8.3  & 10.9 & 2.0 \\\\\n                    & novelty                & 0.00 & 0.00 & 0.07 & 0.00 & 11.8 & 0.0  & 0.0  & 3.4  & 3.3 \\\\\n\\rowcolor[gray]{0.90}\nSeasonal$^{*}$      & binomial               & 0.00 & 0.00 & \\textbf{2.64} & 0.69 & 20.4 & 15.3 & 14.4 & 22.3 & 35.2 \\\\\n\\rowcolor[gray]{0.90}\n                    & beta-bin.$^{\\dagger}$  & 0.07 & 0.00 & 0.21 & 0.00 & 20.4 & 15.3 & 15.1 & 10.9 & 16.9 \\\\\n\\rowcolor[gray]{0.90}\n                    & novelty                & 0.00 & 0.00 & 0.00 & 0.00 & 20.4 & 15.3 & 0.0  & 3.4  & n/a \\\\\nNone$^{*}$          & binomial               & 0.97 & 0.00 & \\textbf{4.38} & \\textbf{1.04} & 89.6 & 89.7 & 61.1 & 22.4 & 32.6 \\\\\n                    & beta-bin.$^{\\dagger}$  & 0.90 & \\textbf{1.74} & \\textbf{1.46} & \\textbf{1.39} & 89.7 & 90.1 & 65.7 & 11.0 & 6.6 \\\\\n                    & novelty                & 0.28 & 0.00 & 0.42 & 0.35 & 89.6 & 89.7 & 0.0  & 3.4  & 5.7 \\\\\n\\bottomrule\n\\end{tabular}\n\n\\vspace{2pt}\n\\begin{minipage}{\\linewidth}\\footnotesize In \\%. Dev.: development days. Held: held-out day. E2--E4: highest. Crowds, FA coll.: dev., pooled. New, Shared: E1's $0.1\\times$ botnet. Binomial and beta-bin.\\ include the novelty rule. Origin/binomial, Seasonal/beta-bin.\\ and None/novelty are Table~\\ref{tab:configs}'s primary, beta-binomial arm and novelty rule. $^{\\dagger}$Cross-fitted. $^{*}$Added after the held-out day.\\end{minipage}\n\\end{table}"
+    }
+  ]
+}

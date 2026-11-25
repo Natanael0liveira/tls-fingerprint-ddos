@@ -1,50 +1,63 @@
 # TLS Fingerprint DDoS Filtering
 
-Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**, prepared for IEEE/IFIP NOMS 2027. The manuscript is frozen at **r53, 16 November 2026**, with 11 pages (8 pages of main text).
+Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**, submitted to IEEE/IFIP NOMS 2027. The author identified the current canonical TeX as the final submitted version on **24 November 2026**. A local rebuild was verified on that date: 11 pages, with the main text through page 8.
 
-- [Frozen paper](papers/http-session-noms/NOMS2027-r53.pdf), [LaTeX](papers/http-session-noms/article.tex), [checksums](papers/http-session-noms/freeze.json)
-- [Glossary and configurations](docs/concepts.md)
-- [Figures explained](docs/figures.md), [tables explained and provenance](docs/tables.md)
-- [Metrics](docs/metrics.md), [study design](docs/evaluation.md)
-- [Findings and limitations](experiments/FINDINGS.md)
-- [Reproduction and availability](docs/reproduction.md)
+- [Current manuscript and build instructions](papers/http-session-noms/README.md)
+- [Submission package](submissions/noms2027/README.md), [LaTeX](submissions/noms2027/latex/article.tex), [verification record](submissions/noms2027/verification.json)
+- [Glossary and configurations](docs/concepts.md), [metrics](docs/metrics.md), [study design](docs/evaluation.md)
+- [Figures explained](docs/figures.md), [tables and provenance](docs/tables.md)
+- [Reproduction and data availability](docs/reproduction.md)
+- [Frozen r53 baseline](archive/noms2027/r53/README.md)
 
 ## What was evaluated
 
-Per endpoint and five-minute window, a volume trigger decides whether to act. The scope selects TLS fingerprints over-represented relative to that endpoint's profile or absent from it. The primary configuration combines the binomial test and novelty rule, with known fleets exempted. A separate, exploratory two-path rule also applies novelty filtering without the volume trigger.
+Per endpoint and five-minute window, a volume trigger decides whether to act. The scope selects TLS fingerprints over-represented relative to that endpoint's profile or absent from it. The primary configuration combines the binomial test and novelty rule, with known fleets exempted. If the trigger fires without selecting a fingerprint, a fallback challenges or rate-limits every client.
 
 The data span 23 days at four operator endpoints: 3 initial calibration days, 5 development days, 1 held-out day and 14 prospective evaluation days. Botnets are injected into the 20 evaluation days. Two real attacks at a customer's site (E5) are examined separately, post hoc.
 
 ## Main findings
 
-- On generated botnets using 5–25 new TLS stacks, profile-based selection covers about 90% of attackers. At 100 stacks, the binomial test covers 38.6%; adversarial fingerprints reduce coverage to 30.4% with 3.78% collateral.
-- Over the 14 prospective days, the primary configuration raises 31 false alarms in 16,103 clean windows (0.19%). Its median collateral per false alarm is 39.0%. Remaining within the 1% budget does not establish a stable false-alarm rate.
-- On the busiest endpoint, coverage of about 300 bots on new fingerprints is 2.9% with the trigger and 89.6% without it. Common fingerprints and legitimate fleets limit selectivity.
-- In counterfactual replays at E5, filters applied one window late remove about 36% of each attack's requests. Collateral is below 0.1% under the main attacker labels and up to 1.6% under alternative labels. The CDN had already rate-limited these attacks; this is not a comparison of WAF effectiveness.
-- The ungated novelty rule exceeds the budget at E5 (8.94%). The two-path rule requires prospective validation across sites.
+- Over the 14 prospective days, the primary configuration raises 31 false alarms in 16,103 clean windows (0.19%). Its median collateral per false alarm is 39.0%. Low alarm frequency does not establish low damage in affected windows.
+- On the busiest endpoint, coverage of about 300 bots on new fingerprints is 2.9% with the trigger and 89.6% without it. Legitimate fleets and common fingerprints also limit selectivity.
+- The fallback challenges or rate-limits 0.6% of clean origin-windows prospectively, compared with 0.016% blocked by the filters. Blocking and challenging are distinct actions.
+- In exploratory replays at E5, filters applied one window late remove about 36% of each attack's requests, with at most 1.6% legitimate-origin collateral under two attacker labelings. The CDN had already rate-limited the attacks; service protection was not measured.
+- Ungated novelty exceeds the false-alarm budget at E5 (8.94%). The results support validation at each endpoint rather than a default deployment policy.
 
 ## Repository layout
 
 | Path | Purpose |
 |---|---|
-| `papers/http-session-noms/` | Frozen r53 source, PDF and two figures |
-| `docs/` | Current definitions, metrics, figure and table reading guides, and reproduction guide |
-| `experiments/sprint-6-noms/` | Evaluation scripts and committed aggregate results |
-| `experiments/sprint-1/` through `sprint-5/`, `common/`, `pillar*/` | Earlier experiment infrastructure, including dependencies still imported by the evaluation |
+| `papers/http-session-noms/` | Canonical manuscript, bibliography and figures; edit here |
+| `submissions/noms2027/` | Self-contained delivery, verified PDF, checksums and source comparison |
+| `archive/noms2027/r53/` | Frozen r53 snapshot and its original checksums |
+| `archive/local/` | Ignored local history, reviews and original handoffs |
+| `docs/` | Current definitions, figure/table guides and reproduction instructions |
+| `experiments/sprint-6-noms/` | Evaluation code and saved aggregate results |
+| `experiments/sprint-6-noms/results/manuscript/` | Exports and numerical audit of the current manuscript |
+| `experiments/sprint-6-noms/results/r53/` | Historical r53 exports, retained unchanged |
+| `experiments/sprint-1/` through `sprint-5/`, `common/`, `pillar*/` | Experiment infrastructure and dependencies still imported by the evaluation |
 | `ontology/` | Vocabulary read by the reference implementation |
 
-Earlier manuscripts, the outdated translation and unused manuscript figures have been removed from the current tree; Git history preserves them. Earlier experiment directories remain because deleting them would break imports and reproduction. Their historical reports do not override r53.
+Current PDFs and upload bundles are local build products. Source files, verification records and checksums are versioned. Historical experiment paths remain stable so imports and reproduction commands continue to work.
 
 ## Quick checks
 
 ```sh
-python3 scripts/check_release.py
-python3 scripts/export_tables.py --check
-python3 experiments/sprint-6-noms/scripts/audit_paper.py
+make check
 ```
 
-The audit compares the current tables with the committed aggregate results and reports its coverage and gaps. Transcribing a value from the manuscript is not an independent experimental reproduction. Post hoc scripts and anonymized results recovered from the handoff are also included. Raw operator data are not public; see [availability](docs/reproduction.md).
+This verifies the frozen r53 archive, delivery/source synchronization, eight table exports and 217 independently checked numerical cells. See the audit output for its coverage and gaps. These checks need only Python 3.9+ and Make; CI uses Python 3.11.
 
-For figure regeneration install `experiments/requirements-figures.txt`. Full experimental dependencies remain in `experiments/requirements.txt`. Build instructions are in the [paper README](papers/http-session-noms/README.md).
+To regenerate current table transcriptions and their audit record, run `make tables`. To refresh the delivery from the already verified source and PDF, run `make submission`. Packaging refuses to reuse a verification record for a different source, bibliography or PDF.
 
-MIT licensed, subject to [NOTICE](NOTICE). The frozen paper cites the original repository name `knowledge-graph-ddos-article`; its source is preserved byte for byte.
+The sustained-botnet regression checks require the experimental environment:
+
+```sh
+make test
+```
+
+The manuscript's persistence estimates use the original model, which redraws bot fingerprints every window from a fixed daily pool. The corrected script defaults to fixed assignments, but no production rerun of that model was performed here. See the [post hoc guide](experiments/sprint-6-noms/scripts/posthoc/README.md).
+
+For figure regeneration install `experiments/requirements-figures.txt`; full experimental dependencies are in `experiments/requirements.txt`. Raw operator data are restricted. Transcribing a manuscript value or checking a saved reduction does not rerun the underlying experiment.
+
+MIT licensed, subject to [NOTICE](NOTICE).
