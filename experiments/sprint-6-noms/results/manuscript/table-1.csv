@@ -1,0 +1,8 @@
+work,selection,evaluated_on,question
+"Attack detectors~\cite{kemp2023approach,belcastro2025klage}",None: an attack verdict,Labeled datasets,Is this traffic an attack?
+"Aggregate filters~\cite{mahajan2002pushback,alcoz2022accturbo,soldo2012filtering}",Header-field aggregates or source prefixes,Simulation and testbeds,Which aggregates or prefixes to limit?
+"Anomaly extraction~\cite{silveira2010urca,brauckhoff2009extraction}",Over-represented feature values,Backbone traces,Which values explain an anomaly?
+PacketScore~\cite{kim2006packetscore},Packets scored against a nominal profile,Trace-driven simulation,Which packets to drop under overload?
+JA3 report~\cite{kobayashi2024ja3},HTTPS traffic using JA3,A security operations center,Can JA3 mitigate HTTPS floods?
+"Anti-bot evaluations~\cite{aminazad2020webrunner,vastel2020fpcrawlers}",None: bot detection is tested,"Commercial services, live websites",How do bots evade detection?
+This work,New or over-represented JA4 at the endpoint,"Production endpoints, injected and real attacks",What coverage and collateral does filtering yield?

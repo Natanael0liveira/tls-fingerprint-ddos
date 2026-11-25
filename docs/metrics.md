@@ -1,4 +1,4 @@
-# Metrics and populations (r53)
+# Metrics and populations
 
 | Metric | Denominator and aggregation |
 |---|---|
@@ -11,13 +11,15 @@
 | Crowds | Filter-firing rate under 1,000-client crowds |
 | Table V E2–E4 | Highest endpoint FA rate among E2, E3 and E4 |
 | Table V E1, 0.1× | About 300 attackers on E1; separate from the pooled 100-attacker scenario |
-| Table IV Req. | Requests on selected fingerprints / requests, summed over the respective attack's windows |
-| Table IV Att., Leg. | Blocked attacker/legitimate origins divided by their respective populations over the attack windows |
-| Table IV Leg.e | Collateral when only edge-blocked addresses count as attackers |
-| Table VI recall | Scope selection in the alarm cluster; does not include the production trigger |
+| Table VI Req. | Requests on selected fingerprints / requests, summed over the respective attack's windows |
+| Table VI Att., Leg. | Blocked attacker/legitimate origins divided by their respective populations over the attack windows |
+| Table VI Leg.e | Collateral when only edge-blocked addresses count as attackers |
+| Table VII recall | Scope selection in the alarm cluster; does not include the production trigger |
 
-`n/a` means no false alarms and hence no conditional median. A dash or blank denotes a measurement not computed. Neither means observed zero collateral. Bold identifies FA rates exceeding 1%, not arbitrary percentages exceeding 1%.
+`n/a` means no false alarms and hence no conditional median. A dash or blank generally denotes a measurement not computed; in the Table III overview, the dash specifically means no fallback. Neither means observed zero collateral. Bold identifies FA rates exceeding 1%, not arbitrary percentages exceeding 1%.
 
-Table VII uses development days for Crowds, FA coll. and Shared. Its paired dev./held. columns distinguish development and held-out results. New/Shared refer to E1's 0.1× injection.
+Table VIII uses development days for Crowds, FA coll. and Shared. Its paired dev./held. columns distinguish development and held-out results. New/Shared refer to E1's 0.1× injection.
 
 The post hoc independence expectations 2.87, 5.8 and 11.0 use different stratifications. Their range is not a confidence interval. Window-based intervals assume independence; endpoint-day resampling addresses a different level of dependence.
+
+Table III distinguishes blocked origins from origins exposed to a challenge. Its Clean column counts windows with an action; its Legit. column is conditional on those windows. These are not interchangeable measures of harm.

@@ -15,6 +15,7 @@ timestamps/fingerprint identifiers are published.
 | `holm.py` | Eight-test family and Holm adjustment from recorded aggregate counts |
 | `hourly_compare.py` | Historical hourly-profile sensitivity; requires the corresponding experimental run |
 | `e5_delay_modes.py` | E5 timing replay using a private input manifest |
+| `sustained_ratelimit.py` | Sustained botnets against deployed (next-window, one-hour) filters, and a per-fingerprint origin cap; fixed per-bot fingerprints by default, with an explicit legacy resampling mode |
 
 Most scripts use `python script.py output.json`. Set `PRODDATA` to the operator
 export directory, and `ENDPOINT_MAP` to a private JSON mapping real hostnames to
@@ -31,3 +32,43 @@ The algorithms were ported from the handoff; restricted-data runs were not
 reexecuted during this repository update. The aggregate files are recorded
 outputs, not values manufactured from the manuscript. `hourly_compare.py` is
 historical supporting code, not a required reproduction command for r53.
+
+## Sustained-botnet assignment correction (23 Nov 2026)
+
+The original replay fixed the daily pool of 25 stacks but called `botnet()` in
+every window, redrawing the bots' fingerprints. It did not keep each bot on its
+fingerprint throughout the day. The manuscript now describes this original model
+explicitly; its 8.4% coverage, 3.5–13.6% interval and 91% unfiltered one-hour
+attacks are historical results of that model, not a validated fixed-assignment
+rerun. The pooled 100-attacker result of 60% is omitted.
+
+The corrected script draws the complete bot composition once per endpoint, day
+and configuration. It reuses those counts in every window; at this aggregation
+level that is equivalent to retaining each bot's fingerprint. Run the two models
+to separate persistence from changes in bot composition:
+
+```sh
+python sustained_ratelimit.py fixed.json --assignment fixed
+python sustained_ratelimit.py original-model.json --assignment resampled
+```
+
+Both commands require `PRODDATA`, `ENDPOINT_MAP` and the two frozen per-window
+CSVs. Each output records its assignment model, seed, script hash, parameters and
+CSV hashes. Any mismatch in clean windows, triggers, selections, collateral or
+false-alarm counts stops the run before it writes aggregate results. The
+`resampled` mode preserves the original random stream with seed 20261121.
+
+The private exports were unavailable for the 23 Nov correction, so no production
+result from the fixed model has been generated or substituted into the paper.
+Regression checks use synthetic counts and need no operator data:
+
+```sh
+experiments/.venv/bin/python -m unittest discover \
+  -s experiments/sprint-6-noms/scripts/posthoc -p test_sustained_ratelimit.py -v
+```
+
+Run that check from the repository root. It covers stable bot assignments, the
+original resampling stream, next-window activation, expiry after 12 windows,
+short-attack coverage, proportional cap exposure and rejection of invalid
+reconstructions. The original handoff ZIP is historical evidence, not the current
+executable version of these scripts.

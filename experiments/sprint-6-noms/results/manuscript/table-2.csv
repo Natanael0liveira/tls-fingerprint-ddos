@@ -1,0 +1,8 @@
+configuration,trigger,scope,fleets
+Primary,origins,binomial union novelty,exempt
+z-score,origins,z > its p99,no
+Base rule,Omega,binomial,no
+Novelty rule,none,novelty,no
+Beta-binomial arm,seasonal,beta-bin. union novelty,no
+"No-trigger arm, E1 only",none,binomial union novelty,exempt
+Two-path rule,none / origins,novelty / binomial,exempt

@@ -1,4 +1,4 @@
-name: Frozen artifact checks
+name: Manuscript and archive checks
 on: [push, pull_request]
 permissions:
   contents: read

@@ -1,8 +1,12 @@
-# Frozen NOMS 2027 manuscript: r53
+# NOMS 2027 manuscript
 
 **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**
 
-The source, bibliography, two PNGs and figure scripts were copied byte for byte from `entrega-NOMS2027-r53`. [freeze.json](freeze.json) records their SHA-256 hashes. The reference [PDF](NOMS2027-r53.pdf) has SHA-256 `77c2029a9d4b9b3ee8c0599d7804cea81412cb94cf54b0ede6564e8ec1efb534`.
+Edit [article.tex](article.tex), [references.bib](references.bib) and the two figures here. This is the canonical source. The [submission package](../../submissions/noms2027/README.md) contains the synchronized delivery; its [verification record](../../submissions/noms2027/verification.json) identifies the exact source and PDF.
+
+The author identified the current `article.tex` as the final submitted version on 24 November 2026. It is preserved without textual changes in the synchronized package. The local PDF was rebuilt from this source; it has not been compared with the PDF uploaded to the submission system.
+
+The verified PDF has 11 pages. Main text, conclusion, acknowledgment, AI disclosure and reproducibility end on page 8; references begin on page 8 and the appendix ends on page 11. Results open with a three-policy overview of the prospective period, followed by selection mechanisms, trigger effects, variants and exploratory checks, and the real-attack replay.
 
 ## Build
 
@@ -13,18 +17,32 @@ pdflatex -interaction=nonstopmode -halt-on-error article
 pdflatex -interaction=nonstopmode -halt-on-error article
 ```
 
-Expected: 11 pages; main text, acknowledgment and reproducibility through page 8; references start on page 9. PDF hashes vary with build metadata; compare extracted text with the reference PDF. The repository URL inside the frozen source intentionally retains its original spelling.
+Run from this directory. PDF hashes can vary with build metadata. A newly built PDF must be checked before its verification record is updated.
 
-## Regenerate figures
+## Checks and delivery
 
-The [figure guide](../../docs/figures.md) explains both diagrams, their visual encodings and limitations. The [table guide](../../docs/tables.md) explains all seven tables, including populations, periods and worked examples.
+From the repository root:
 
-From the repository root, install `experiments/requirements-figures.txt`, then:
+```sh
+make check
+make tables
+make submission
+```
+
+`make check` verifies the delivery and archive, the current table exports and 217 numerical cells against saved results. `make tables` refreshes transcriptions and the audit record. `make submission` copies this verified source, bibliography, dependencies and PDF into the delivery and regenerates its diff and checksums. It rejects inputs that differ from the recorded verification; it does not certify a new manuscript automatically.
+
+For Overleaf, upload the complete `submissions/noms2027/latex/` directory. The current bibliography differs from the frozen r53 version.
+
+## Figures and experimental limits
+
+The [figure guide](../../docs/figures.md) explains both diagrams; the [table guide](../../docs/tables.md) covers all eight current tables and their populations. To regenerate figures without changing the manuscript inputs:
 
 ```sh
 python3 scripts/regenerate_figures.py --out build/figures
 ```
 
-Fig. 1 comes from `figures/fig1_r48.py`; Fig. 2 from `fig_stops` in `figures/make_figures_en.r13.py`, reading `experiments/sprint-6-noms/results/production_tables.json`. The original figure script contains older unused functions; the wrapper runs only the two figures used by r53.
+Run that command from the repository root after installing `experiments/requirements-figures.txt`. The scripts retain their historical filenames; only the two current figures are generated.
 
-Run `python3 scripts/check_release.py` from the root to verify the freeze. Table exports preserve all seven tables and their notes. Public artifacts identify the customer only as E5.
+Sustained-botnet results describe the original per-window fingerprint resampling, not a validated fixed-assignment rerun. The corrected replay defaults to fixed per-bot fingerprints and requires private exports for a production rerun. Its synthetic regression tests do not establish new production numbers. See the [post hoc guide](../../experiments/sprint-6-noms/scripts/posthoc/README.md).
+
+The [frozen r53 archive](../../archive/noms2027/r53/README.md) preserves the original source, bibliography, PDF and checksum manifest byte for byte. E5 remains anonymized in public artifacts.

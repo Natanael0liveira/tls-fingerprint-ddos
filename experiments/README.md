@@ -1,4 +1,4 @@
-> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../README.md). Older paper-section references below belong to earlier revisions.
+> Historical implementation documentation. For the current manuscript, table numbering and availability, use [the current repository guide](../README.md). Older paper-section references below belong to earlier revisions.
 
 # Experiments
 
@@ -16,7 +16,7 @@ Where to go next:
 - [`../docs/evaluation.md`](../docs/evaluation.md) for the experimental design,
   [`../docs/concepts.md`](../docs/concepts.md) for the method and
   [`../docs/metrics.md`](../docs/metrics.md) for the metrics.
-- The root README's section [Figures, tables and listings](../README.md#figures-tables-and-listings):
+- The [table guide](../docs/tables.md) and [figure guide](../docs/figures.md):
   which result file backs each table and figure of the paper.
 
 ## Prerequisites
@@ -68,7 +68,7 @@ export DATA_ROOT=/Volumes/YourDrive/kg-ddos-data
 
 | Where | Command | What it does | Writes |
 |---|---|---|---|
-| `sprint-6-noms/` | `make audit` | recomputes about 250 printed numbers of the paper from `results/` | nothing |
+| `sprint-6-noms/` | `make audit` | checks 217 current numerical cells against saved results | nothing |
 | `sprint-6-noms/` | `make block-report-check` | runs the block report's code on the paper's own reduction | nothing |
 | `sprint-6-noms/` | `make block-report` | the 14-day block's metrics 1–10, from its committed reduction | `results/block_report.json` |
 | `sprint-6-noms/` | `make compile-check` | the count query compiled from the ontology, checked on generated sessions | `results/compile_check.json` |
@@ -77,7 +77,7 @@ export DATA_ROOT=/Volumes/YourDrive/kg-ddos-data
 | `sprint-6-noms/` | `make latency` | the cost model (App. D, Fig. 4); the full sweep takes long | `results/latency_*` |
 | `pillar2-symbolic-reasoning/` | `make demo` | the SWRL rules and the SPARQL Ω aggregation on a toy graph | nothing |
 | `pillar4-evidence-mitigation/` | `make demo` | an evidence chain and its STIX bundle on a toy cluster, with the modal scope | overwrites `results/evidence.jsonld`, `results/mitigation.stix.json` |
-| repository root | `experiments/.venv/bin/python papers/http-session-noms/figures/make_figures_en.py` | Figs. 2–4, from `production_tables.json` and `latency_summary.json` | the figure files |
+| repository root | `experiments/.venv/bin/python scripts/regenerate_figures.py --out build/figures` | the two current figures, from their source and committed reduction | `build/figures/` |
 
 Every other target reads the captures, the scenario caches or the operator's exports on the
 drive. In `sprint-6-noms/`, `make clean` deletes every committed `results/*.json` and `*.csv`,

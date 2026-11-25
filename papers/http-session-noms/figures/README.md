@@ -1,6 +1,6 @@
-# Figures used by r53
+# Current manuscript figures
 
-See the [illustrated reading guide](../../../docs/figures.md) for the meaning of each figure and the [table guide](../../../docs/tables.md) for Tables I–VII.
+See the [illustrated reading guide](../../../docs/figures.md) for the meaning of each figure and the [table guide](../../../docs/tables.md) for Tables I–VIII.
 
 | Printed number | Image | Generator |
 |---|---|---|
@@ -15,4 +15,4 @@ From the repository root:
 python3 scripts/regenerate_figures.py --out build/figures
 ```
 
-Dependencies are pinned in [requirements-figures.txt](../../../experiments/requirements-figures.txt). Fig. 2 reads `sweep.fleets` in [production_tables.json](../../../experiments/sprint-6-noms/results/production_tables.json). Regeneration writes to a separate directory so the frozen images remain available for comparison.
+Dependencies are pinned in [requirements-figures.txt](../../../experiments/requirements-figures.txt). Fig. 2 reads `sweep.fleets` in [production_tables.json](../../../experiments/sprint-6-noms/results/production_tables.json). Regeneration writes to a separate directory so the manuscript inputs remain available for comparison.

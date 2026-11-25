@@ -1,4 +1,4 @@
-> Historical implementation documentation. For frozen r53 results, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
+> Historical implementation documentation. For the current manuscript, table numbering and availability, use [the current repository guide](../../README.md). Older paper-section references below belong to earlier revisions.
 
 # Sprint 6: the experiments of the NOMS 2027 submission
 

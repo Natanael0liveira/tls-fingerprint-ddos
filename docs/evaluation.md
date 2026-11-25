@@ -1,4 +1,4 @@
-# Evaluation design (r53)
+# Evaluation design
 
 The manuscript is an offline evaluation. It does not establish live service protection or superiority over the CDN's WAF.
 
@@ -21,3 +21,5 @@ The manuscript is an offline evaluation. It does not establish live service prot
 An addendum amended test 3 after export but before results were computed: the original relative size gave only 2–7 attackers at E2–E4 and at most 0.1% coverage on development data. Both versions prefer the same arm. Protocols and export-hash records remain immutable in `experiments/sprint-6-noms/results/heldout_block*.md` and `fresh_day*.md`.
 
 The two-path rule, independence analyses, persistent-filter replay and history-baseline comparison are exploratory. New findings should retain this distinction.
+
+The per-fingerprint origin cap and sustained-botnet replay are also post hoc. The published persistence estimates redraw bot fingerprints each window from a daily fixed stack pool. They do not establish fixed per-bot coverage. The corrected script defaults to fixed assignments, with a legacy resampling option; production validation of the fixed model requires restricted exports.

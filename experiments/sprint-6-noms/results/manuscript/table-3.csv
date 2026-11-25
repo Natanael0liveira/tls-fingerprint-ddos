@@ -1,0 +1,4 @@
+policy,E1_0.1x_bots_pct,clean_action_windows_pct,median_legitimate_exposure_per_action_pct,fallback_origin_windows_pct
+Primary,2.9,0.19,39.0,0.6
+"Novelty, no trigger",89.6,0.00,n/a,--
+Origin cap (post hoc),57,1.5,0.7,--
