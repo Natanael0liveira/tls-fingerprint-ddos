@@ -32,5 +32,7 @@ verification and restoration; changes should start from a separate working copy.
 
 Run `make check` for public artifact checks. Full manuscript verification requires
 the local freeze; see the [reproduction guide](../../docs/reproduction.md).
-The PDF in that freeze was rebuilt locally and was not compared with the uploaded
-submission binary. E5 outputs remain anonymized.
+The author-provided submitted PDF is preserved in a separate sealed companion
+package. Its text and all eleven page renders match the local rebuild exactly;
+see the artifact record for both binary hashes and the verification scope.
+E5 outputs remain anonymized.

@@ -41,7 +41,12 @@ The authors' ignored snapshot is at
 TeX, a locally rebuilt PDF, build dependencies, original verification records,
 the earlier complete snapshot and a self-contained Git bundle. Files have
 read-only permissions and their hashes are recorded in the snapshot manifests.
-The rebuilt PDF has not been compared with the actual uploaded binary.
+On 25 November 2026 the author supplied the PDF identified as submitted to JEMS.
+It is preserved separately in
+`archive/local/submitted/noms2027-jems-confirmed-2026-11-25/`, bound to the
+original freeze manifest by its hash. Extracted text and all eleven page renders
+are identical to the local rebuild (RGB, 150 dpi). The supplied binary has its
+own recorded hash. No independent portal access or submission receipt is claimed.
 
 When that local snapshot is available, run from the repository root:
 
@@ -50,8 +55,9 @@ python3 scripts/check_release.py --private archive/local/submitted/noms2027-2026
 python3 scripts/export_tables.py --check --source archive/local/submitted/noms2027-2026-11-24/paper/article.tex
 ```
 
-The first command also verifies every private frozen file. The second compares
-table transcriptions with the frozen TeX and refuses a different source hash.
+The first command also verifies every private frozen file and the separately
+sealed submitted-PDF confirmation. The second compares table transcriptions
+with the frozen TeX and refuses a different source hash.
 To restore the tag in another directory, follow the private snapshot's README;
 keep new revisions separate from the frozen files.
 

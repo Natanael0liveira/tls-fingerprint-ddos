@@ -13,8 +13,17 @@ The submitted-source SHA-256 is:
 faea129198a1a0cd1907536a8e13ac6548305837c89a166d8073755ecd16dbdc
 ```
 
-The local rebuilt PDF hash is also recorded. That binary was not compared with
-the PDF uploaded to the submission system.
+On 25 November 2026, the author supplied and identified the PDF submitted to JEMS.
+Its SHA-256 is:
+
+```text
+bd73a7d47db82e6b44c9ff68af4fcce473f17304096bcaa119b398a8a08d89ef
+```
+
+Its extracted text and all eleven page renders match the frozen local rebuild
+exactly (RGB, 150 dpi). Both binary hashes are recorded separately. The
+identification comes from the author; the JEMS portal was not independently
+accessed and no submission receipt was provided.
 
 ## Public checks
 
@@ -54,6 +63,13 @@ Full-source checks, when that snapshot is available:
 python3 scripts/check_release.py --private archive/local/submitted/noms2027-2026-11-24
 python3 scripts/export_tables.py --check --source archive/local/submitted/noms2027-2026-11-24/paper/article.tex
 ```
+
+The separately sealed companion directory is
+`archive/local/submitted/noms2027-jems-confirmed-2026-11-25/`. It preserves the
+author-provided binary as `submitted.pdf`, a comparison report and checksum
+manifests. Its confirmation binds to the original freeze manifest's hash.
+The `--private` check above verifies both packages. The original freeze and
+historical tag were not modified.
 
 The historical tag `noms2027-submitted` and earlier commits still contain the
 manuscript. Removing current files does not remove that history or copies already

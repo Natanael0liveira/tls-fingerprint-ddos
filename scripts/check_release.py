@@ -53,6 +53,34 @@ def manuscript_paths():
     return found
 
 
+def verify_submitted_pdf(base_directory, report):
+    """Check the separately sealed author-provided PDF and its base-freeze link."""
+    info = report.get('submitted_pdf_confirmation')
+    if not info:
+        return []
+    directory = base_directory.parent / Path(info['private_path']).name
+    manifest = directory / 'confirmation.json'
+    if not manifest.is_file():
+        return ['Private submitted-PDF confirmation is missing']
+    confirmation = json.loads(manifest.read_text())
+    failures = verify_hashes(directory, confirmation['sha256'])
+    for path, expected in [
+        (manifest, info['confirmation_manifest_sha256']),
+        (directory / 'SHA256SUMS', info['checksum_manifest_sha256']),
+        (base_directory / 'freeze.json', info['base_freeze_manifest_sha256']),
+        (directory / 'submitted.pdf', report['submitted_pdf_sha256']),
+    ]:
+        if not path.is_file() or sha256(path) != expected:
+            failures.append(f'Submitted-PDF confirmation differs: {path.name}')
+    if confirmation['source_sha256'] != report['source_sha256']:
+        failures.append('Submitted-PDF confirmation identifies a different source')
+    if confirmation['base_freeze_manifest_sha256'] != info['base_freeze_manifest_sha256']:
+        failures.append('Submitted-PDF confirmation identifies a different base freeze')
+    if confirmation['submitted_pdf_sha256'] != report['submitted_pdf_sha256']:
+        failures.append('Submitted-PDF confirmation identifies a different PDF')
+    return failures
+
+
 def verify_private(directory, report):
     frozen = json.loads((directory / 'freeze.json').read_text())
     entries = frozen['sha256']
@@ -70,7 +98,7 @@ def verify_private(directory, report):
         path = directory / name
         if name not in entries or not path.is_file() or sha256(path) != report[key]:
             failures.append(f'Private submitted file differs: {name}')
-    return failures
+    return failures + verify_submitted_pdf(directory, report)
 
 
 def main():
@@ -104,6 +132,8 @@ def main():
     print('Table snapshots identify submitted source: ' + report['source_sha256'])
     if args.private:
         print('Private manuscript freeze verified separately')
+        if report.get('submitted_pdf_confirmation'):
+            print('Author-identified submitted PDF and its sealed confirmation verified')
     else:
         print('Full source/PDF verification requires the separate private freeze (--private)')
 
