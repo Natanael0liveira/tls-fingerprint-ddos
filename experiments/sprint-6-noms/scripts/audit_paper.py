@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check current manuscript numerical cells against saved reductions, without raw data.
+"""Check published table cells against saved reductions, without raw data or TeX.
 
 Checks calibration floors, real-attack primary timing rows, the six registered
 configurations, generated scopes and trigger comparisons, using table labels.
@@ -119,8 +119,8 @@ def main():
     result=audit()
     if args.out:
         args.out.parent.mkdir(parents=True,exist_ok=True);args.out.write_text(json.dumps(result,indent=2)+'\n')
-    print(f"{result['source']}: {result['checked_cells']} numerical cells checked; {len(result['mismatches'])} mismatches")
-    print('Source SHA-256:',result['source_sha256'])
+    print(f"Public table snapshot: {result['checked_cells']} numerical cells checked; {len(result['mismatches'])} mismatches")
+    print('Recorded submitted-source SHA-256:',result['source_sha256'])
     for failure in result['mismatches']: print(failure)
     for gap in result['gaps']: print('Not audited:',gap)
     raise SystemExit(bool(result['mismatches']))

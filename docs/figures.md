@@ -1,6 +1,8 @@
 # Reading the figures
 
-This guide follows the [current manuscript](../papers/http-session-noms/article.tex). The paper has two figures; [Tables I–VIII have a separate guide](tables.md). An **origin** is an address–fingerprint pair, and each window lasts five minutes.
+This guide explains the two [public supporting figures](../papers/http-session-noms/figures/README.md).
+[Tables I–VIII have a separate guide](tables.md). An **origin** is an
+address–fingerprint pair, and each window lasts five minutes.
 
 ## Figure 1 — From access logs to selective filtering
 
@@ -42,4 +44,4 @@ For example, at E1 a 100-attacker botnet has 3.4% coverage with the trigger and 
 
 **Source:** `sweep.fleets` in [production_tables.json](../experiments/sprint-6-noms/results/production_tables.json), plotted by `fig_stops` in [make_figures_en.r13.py](../papers/http-session-noms/figures/make_figures_en.r13.py). The filename `fig6_stops.png` retains an older number.
 
-For commands and dependencies, see [figure regeneration](../papers/http-session-noms/README.md#figures-and-experimental-limits).
+For commands and dependencies, see [figure regeneration](../papers/http-session-noms/figures/README.md).

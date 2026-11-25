@@ -1,9 +1,10 @@
 # Methodology of the submitted evaluation
 
-The [submitted manuscript](../papers/http-session-noms/article.tex) is the
-reference for the method and reported claims. The [evaluation design](../docs/evaluation.md),
-[metrics](../docs/metrics.md) and [table map](../docs/tables.md) explain the protocol,
-denominators and result files. Tag `noms2027-submitted` records the submitted source.
+The [artifact record](../submissions/noms2027/verification.json) identifies the
+complete submitted manuscript, kept in a separate local freeze.
+The [evaluation design](../docs/evaluation.md), [metrics](../docs/metrics.md) and
+[table map](../docs/tables.md) explain the protocol, denominators and public
+result files.
 
 ## Evaluation periods
 
@@ -55,7 +56,7 @@ reductions from commands that require these inputs.
 
 ## What the checks establish
 
-`make tables` transcribes all eight current tables and records the source hash.
+`make tables` regenerates CSVs from the committed eight-table snapshot, retaining its submitted-source hash.
 The independent numerical audit checks 217 cells against committed reductions
 and reports omitted cells and prose statistics. Neither operation reproduces
 restricted traffic or establishes live service protection. Original protocols,

@@ -84,7 +84,7 @@ papers/*/*recomendac*.txt
 papers/*/*resposta*.txt
 papers/*/information-*.pdf
 
-# The paper's PDFs stay local while the paper is under review (IEEE's preprint policy)
+# Full manuscripts are kept locally by the authors' distribution choice.
 papers/http-session-noms/article.pdf
 papers/http-session-noms-pt/article.pdf
 
@@ -100,3 +100,16 @@ archive/local/
 # Current PDFs and upload bundles are local build products.
 submissions/*/article.pdf
 submissions/*/*.zip
+
+# Do not reintroduce complete manuscripts or upload projects in the current tree.
+/papers/http-session-noms/*.tex
+/papers/http-session-noms/*.pdf
+/papers/http-session-noms/*.cls
+/papers/http-session-noms/*.bst
+/papers/http-session-noms/*.sty
+/submissions/noms2027/latex/
+/submissions/noms2027/figure-sources/
+/submissions/noms2027/*.diff
+/archive/noms2027/r53/*
+!/archive/noms2027/r53/README.md
+!/archive/noms2027/r53/freeze.json

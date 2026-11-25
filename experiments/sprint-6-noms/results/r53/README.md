@@ -1,9 +1,9 @@
-# Historical r53 exports
+# Historical table exports
 
-These transcriptions, numerical checks and verification records describe the
-frozen r53 manuscript. Their recorded paths refer to the repository layout at
-that time. The matching source is now preserved in `archive/noms2027/r53/`.
+These transcriptions and verification records describe an earlier internal draft.
+Their recorded source paths and table numbers belong to that historical layout.
+The matching complete manuscript is kept in the ignored local freeze under
+`archive/local/submitted/noms2027-2026-11-24/historical-r53/`.
 
-They are retained unchanged. Current exports and audits are generated separately
-in `../manuscript/` by `make tables` from the repository root. Manuscript
-transcription is distinct from recomputing numerical results from saved reductions.
+Current snapshots and the numerical audit are in [../manuscript/](../manuscript/README.md).
+Public checks require neither the old manuscript nor the submitted full TeX.

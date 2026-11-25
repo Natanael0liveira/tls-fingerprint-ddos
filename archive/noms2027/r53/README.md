@@ -1,16 +1,17 @@
-# Frozen r53 baseline — 16 November 2026
+# Earlier manuscript snapshot metadata
 
-This self-contained snapshot preserves all ten files identified by the original
-[freeze.json](freeze.json), including the original source and bibliography.
-[The PDF](NOMS2027-r53.pdf) has SHA-256
-`77c2029a9d4b9b3ee8c0599d7804cea81412cb94cf54b0ede6564e8ec1efb534`.
-Moving the snapshot did not change any of its recorded file hashes.
+`r53` is an internal draft identifier, not the final submitted version.
+The original [freeze.json](freeze.json) records ten file hashes from that draft.
+The complete snapshot, including its TeX and PDF, is no longer distributed in
+this tree. It is preserved byte for byte under
+`archive/local/submitted/noms2027-2026-11-24/historical-r53/`.
 
-The [current manuscript](../../../papers/http-session-noms/README.md) and
-[submission](../../../submissions/noms2027/README.md) supersede this revision.
-Historical table exports and audit records remain in
-`experiments/sprint-6-noms/results/r53/`; current exports use `results/manuscript/`.
+The [historical table exports](../../../experiments/sprint-6-noms/results/r53/README.md)
+remain public. Current evaluation tables and supported numerical checks are in
+[results/manuscript/](../../../experiments/sprint-6-noms/results/manuscript/README.md).
+See the [submission record](../../../submissions/noms2027/README.md) for the final
+submitted-source hash and private-freeze verification.
 
-Run `python3 scripts/check_release.py` from the repository root to verify this
-archive and the current delivery. Review notes and the original author handoff
-are kept separately under the ignored `archive/local/` directory.
+The original manifest here is provenance metadata for the local snapshot;
+it is not a claim that its ten files remain in the public checkout. Old Git
+commits and tags still retain previously published manuscript files.

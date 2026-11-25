@@ -1,9 +1,9 @@
 # Experiments for the submitted manuscript
 
-The evaluation supporting the [submitted manuscript](../papers/http-session-noms/article.tex)
-is in [sprint-6-noms/](sprint-6-noms/README.md). The paper has two figures and eight
-tables; [the table guide](../docs/tables.md) maps each table to its saved results.
-The submitted source is recorded by tag `noms2027-submitted`.
+The evaluation is in [sprint-6-noms/](sprint-6-noms/README.md). Its two figures and
+eight table snapshots remain public; [the table guide](../docs/tables.md) maps
+each table to its saved results. The complete manuscript is kept in a separate
+local freeze identified by the [artifact record](../submissions/noms2027/verification.json).
 
 - [Findings](FINDINGS.md): coverage, false alarms, collateral and limitations.
 - [Methodology](METHODOLOGY.md): evaluation periods, generated campaigns and inputs.
@@ -18,12 +18,12 @@ Run from the repository root:
 make check
 ```
 
-This needs Python 3.9+ and Make. It checks source/package integrity, the eight
-manuscript table exports and 217 numerical cells against committed reductions.
+This needs Python 3.9+ and Make. It checks public artifact hashes, eight table
+snapshots and 217 numerical cells against committed reductions.
 The audit reports its coverage gaps. It does not rerun the production evaluation.
 
-`make tables` refreshes the current transcriptions and audit record under
-`sprint-6-noms/results/manuscript/`. [Metrics](../docs/metrics.md) explains their
+`make tables` regenerates CSVs and the audit record from the public table snapshot
+under `sprint-6-noms/results/manuscript/`. [Metrics](../docs/metrics.md) explains their
 denominators and the distinction between blocked and challenged origins.
 
 ## Python environment

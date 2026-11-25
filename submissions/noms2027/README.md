@@ -1,68 +1,60 @@
-# NOMS 2027 submitted source package
+# NOMS 2027 artifact and submission record
 
 **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**
 
-Tag `noms2027-submitted` records the submitted source. `latex/article.tex` is
-byte-identical to the canonical source in `papers/http-session-noms/`.
-The local PDF was rebuilt from that source and verified on 24 November 2026;
-it has not been compared with the PDF uploaded to the submission system.
-Current PDFs are local build products and may be absent in a public checkout.
+This directory publishes [submission hashes and verification scope](verification.json),
+not the complete manuscript or upload project. The authors have chosen to keep
+those files in a separate local freeze. The public artifact retains code, figures,
+bibliography, table transcriptions and anonymized reductions.
 
-## Package contents
+The submitted-source SHA-256 is:
 
-| Path | Contents |
-|---|---|
-| `article.pdf` | Locally rebuilt PDF, when present |
-| [latex/article.tex](latex/article.tex) | Complete manuscript source |
-| [latex/references.bib](latex/references.bib) | Bibliography used by the submitted source |
-| `latex/IEEEtran.cls`, `IEEEtran.bst`, `stfloats.sty` | Local build dependencies |
-| `latex/figures/` | The two figures used by the paper |
-| `figure-sources/` | Figure-generation scripts |
-| [verification.json](verification.json) | Source/PDF hashes, checks performed and their limits |
-| [SHA256SUMS](SHA256SUMS) | Package checksum manifest |
-
-## Build
-
-Upload the complete `latex/` directory to Overleaf, with `article.tex` as the main
-document. To build locally, run from this package directory:
-
-```sh
-cd latex
-pdflatex -interaction=nonstopmode -halt-on-error article
-bibtex article
-pdflatex -interaction=nonstopmode -halt-on-error article
-pdflatex -interaction=nonstopmode -halt-on-error article
+```text
+faea129198a1a0cd1907536a8e13ac6548305837c89a166d8073755ecd16dbdc
 ```
 
-The verified local build has 11 pages. Main text, conclusion, acknowledgment,
-AI disclosure and reproducibility end on page 8; references begin there and the
-appendix ends on page 11. It has no overfull boxes or undefined references or
-citations. PDF hashes can change with build metadata.
+The local rebuilt PDF hash is also recorded. That binary was not compared with
+the PDF uploaded to the submission system.
 
-## Checks and interpretation
+## Public checks
 
-Run `make check` from the repository root to verify source/package integrity,
-eight table transcriptions and 217 numerical cells against saved reductions.
-The audit reports its gaps. Six overview values were checked separately; cap
-figures and every prose statistic are not independently audited by those checks.
-No check reruns restricted operator data.
+Run from the repository root:
 
-The [table guide](../../docs/tables.md), [figure guide](../../docs/figures.md) and
-[evaluation design](../../docs/evaluation.md) explain the reported populations
-and separate pre-registered comparisons from exploratory analyses.
-The [reproduction guide](../../docs/reproduction.md) describes available inputs.
-The sustained-botnet estimates use the original per-window fingerprint resampling;
-there is no validated fixed-assignment production rerun here.
+```sh
+make check
+```
 
-## Maintaining the package
+This checks public artifact hashes, eight table snapshots and 217 numerical cells
+against saved reductions. Public checks do not require the full TeX or PDF and
+do not rerun restricted operator data. The [table guide](../../docs/tables.md)
+and [reproduction guide](../../docs/reproduction.md) describe the coverage gaps.
+The cap figures and every prose statistic are not independently audited by those
+217 checks. Table transcriptions retain their table-specific LaTeX blocks;
+they do not contain the full manuscript.
 
-Canonical inputs live in `papers/http-session-noms/`. After a changed manuscript
-has been rebuilt and its own verification recorded, `make submission` synchronizes
-this package and regenerates its checksums. It refuses inputs that differ from
-the recorded source, bibliography or PDF. Preserve `noms2027-submitted` as the
-record of the submitted version.
+`make artifact` refreshes [SHA256SUMS](SHA256SUMS) for the public files without
+copying a manuscript. The historical `make submission` target is an alias for
+this public-artifact operation. To check those hashes directly, run from the root:
 
-The optional [historical source diff](changes-from-r53.diff) compares this source
-with an earlier internal draft. Earlier snapshots and their identifiers are
-explained in the [archive index](../../archive/README.md); they are not the
-submitted version. Public E5 outputs remain anonymized.
+```sh
+shasum -a 256 -c submissions/noms2027/SHA256SUMS
+```
+
+## Private frozen copy
+
+The local snapshot lives at `archive/local/submitted/noms2027-2026-11-24/` and is
+ignored by Git. It includes the exact submitted TeX, figures, bibliography,
+build dependencies, a locally rebuilt PDF, the original verification report and
+`noms2027-submitted.bundle`. Its own checksum manifests cover all frozen files.
+No frozen source text was edited during removal from the current tree.
+
+Full-source checks, when that snapshot is available:
+
+```sh
+python3 scripts/check_release.py --private archive/local/submitted/noms2027-2026-11-24
+python3 scripts/export_tables.py --check --source archive/local/submitted/noms2027-2026-11-24/paper/article.tex
+```
+
+The historical tag `noms2027-submitted` and earlier commits still contain the
+manuscript. Removing current files does not remove that history or copies already
+published. This change does not make those earlier versions private.

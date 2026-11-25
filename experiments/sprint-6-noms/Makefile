@@ -365,8 +365,8 @@ stix-check:
 stix-ingest: stix-check
 	$(PY) scripts/stix_ingest.py --out $(RESULTS)/stix_ingest.json
 
-# Recompute every sprint-6 number of the paper from results/ and compare with the
-# text of article.tex. Needs no drive: it reads only the committed result files.
+# Compare 217 supported cells from the public table snapshot with saved reductions.
+# Needs neither the private manuscript nor the operator data drive.
 audit:
 	$(PY) scripts/audit_paper.py
 

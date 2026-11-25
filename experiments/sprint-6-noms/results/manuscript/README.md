@@ -1,12 +1,15 @@
-# Current manuscript exports
+# Submitted table snapshots
 
-`tables.json` and `table-1.csv` through `table-8.csv` transcribe all current tables
-in source order, with notes, labels and the manuscript hash. The overview is
-Table III; prospective variants are Table V and real attacks are Table VI.
+`tables.json` and `table-1.csv` through `table-8.csv` transcribe all eight tables,
+with notes, labels and the submitted-source hash. The overview is Table III;
+prospective variants are Table V and real attacks are Table VI. Table-specific
+LaTeX blocks are retained; the full manuscript is omitted from this checkout.
 
-`audit.json` checks 217 numerical cells against saved experimental reductions
-and records the current source hash, checked cells and coverage gaps. The table
-exports themselves are transcriptions, not independent experimental reproduction.
+`audit.json` records 217 numerical comparisons with saved reductions and their
+coverage gaps. These comparisons are distinct from transcription and from
+reexecuting restricted production traffic.
 
-Regenerate with `make tables` and verify with `make check`, from the repository
-root. Historical r53 exports remain unchanged in `../r53/`.
+`make tables` regenerates CSVs and the audit record from the public snapshot.
+`make check` verifies their consistency and compares supported cells with saved
+reductions. Comparing against the frozen TeX is a separate optional local check;
+see the [reproduction guide](../../../../docs/reproduction.md).

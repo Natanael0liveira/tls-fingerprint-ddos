@@ -1,16 +1,24 @@
 {
+  "record_kind": "Public artifact metadata; full manuscript is withheld from the current tree",
   "verified_on": "2026-11-24",
-  "canonical_source": "papers/http-session-noms/article.tex",
   "source_sha256": "faea129198a1a0cd1907536a8e13ac6548305837c89a166d8073755ecd16dbdc",
   "pdf_sha256": "d07110891bce79e9e08247579eb3e8579516b7ef9b58296a8ccd2e8dd4fda14b",
   "bibliography_sha256": "7779c19f715f5a77573521d4ea3dffc6c25029b50c91edd2c52565e520ba6506",
-  "delivery_matches_canonical": true,
-  "standalone_latex_build": {
-    "passed": true,
-    "canonical_build_inputs_match": true,
-    "build_inputs": "Canonical submitted TeX, bibliography, local styles and figures copied into an isolated build directory. Its resulting PDF is copied unchanged to the canonical manuscript and delivery."
+  "submission": {
+    "status": "submitted",
+    "source_identified_on": "2026-11-24",
+    "frozen_tag": "noms2027-submitted",
+    "frozen_commit": "f037151f634b020851c7a30de13b0393509ef8ee",
+    "uploaded_pdf_verified": false
   },
-  "pdf": {
+  "distribution": {
+    "updated_on": "2026-11-25",
+    "full_manuscript_in_current_tree": false,
+    "private_freeze": "archive/local/submitted/noms2027-2026-11-24/",
+    "historical_git_contains_manuscript": true,
+    "history_rewritten": false
+  },
+  "historical_pdf_validation": {
     "pages": 11,
     "main_text_last_page": 8,
     "references_first_page": 8,
@@ -85,7 +93,6 @@
     "source_sha256": "faea129198a1a0cd1907536a8e13ac6548305837c89a166d8073755ecd16dbdc",
     "verification_basis": "All eight tabular data blocks match the previously verified source byte for byte; six overview values retain their prior separate validation."
   },
-  "five_original_experimental_tables_preserved": true,
   "sustained_replay": {
     "default_assignment": "fixed",
     "legacy_assignment": "resampled",
@@ -97,51 +104,5 @@
     "script_sha256": "5aa1848080c9193244e521d1c45b43aff7e030fa05f062d862863a8967bb8198",
     "original_script_sha256": "a7759dd4d9bf696db27f2b7b9a3a7e604b5419ea76277536a3a591dd61d8aab8"
   },
-  "frozen_r53_modified": false,
-  "repository_layout": {
-    "canonical_manuscript": "papers/http-session-noms/",
-    "submission": "submissions/noms2027/",
-    "frozen_r53": "archive/noms2027/r53/",
-    "current_exports": "experiments/sprint-6-noms/results/manuscript/",
-    "historical_exports": "experiments/sprint-6-noms/results/r53/"
-  },
-  "eight_table_data_blocks_preserved": true,
-  "previous_editorial_pass": {
-    "date": "2026-11-23",
-    "basis": "User-provided article_rev.tex",
-    "basis_sha256": "8a2a28a703615d0d98e1e2297b166b04b945cb99368141045ace0cdccc8b4f68",
-    "previous_source_sha256": "6c879109a0625701603c2d3c087a43e415fdeb5f9f03be9c9bdbe9d1bf3854ed",
-    "point_corrections": [
-      "Retain real-attack collateral bound and label sensitivity in abstract",
-      "Limit pre-registration claim to registered choices",
-      "Qualify reliability without splitting the conclusion opening",
-      "Keep attack scenario explicit in conclusion",
-      "Preserve counterfactual false-alarm wording",
-      "Remove incorrect table reference for firing-frequency ratio",
-      "Keep replay assignment model explicit in discussion",
-      "Restore accurate replay description and fixed-assignment limitation in appendix",
-      "Preserve current AI attribution",
-      "Keep AI disclosure consistent with current attribution",
-      "Compact AI disclosure without changing attribution",
-      "Keep fallback criterion together using local paragraph penalties; no wording change"
-    ],
-    "new_experiments_run": false,
-    "numerical_table_data_changed": false
-  },
-  "submission": {
-    "status": "submitted",
-    "status_basis": "Author identified the current canonical TeX as the final submitted version in the conversation on 2026-11-24.",
-    "identified_on": "2026-11-24",
-    "source_sha256": "faea129198a1a0cd1907536a8e13ac6548305837c89a166d8073755ecd16dbdc",
-    "source_text_modified_during_sync": false,
-    "local_pdf_origin": "Fresh isolated compilation of the author-designated submitted TeX.",
-    "uploaded_pdf_verified": false
-  },
-  "synchronization": {
-    "date": "2026-11-24",
-    "previous_source_sha256": "6ddfd824bde4ee0477cd9d44977a35dfc0b174058de95bf21811762902122ae8",
-    "eight_table_data_blocks_unchanged": true,
-    "new_experiments_run": false,
-    "sustained_regression_tests_rerun": false
-  }
+  "check_scope": "Public checks verify artifact checksums, table snapshot consistency and numerical cells against saved reductions. Full TeX/PDF verification requires the separate private freeze."
 }

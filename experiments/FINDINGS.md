@@ -1,8 +1,9 @@
 # Findings of the submitted evaluation
 
-The [submitted manuscript](../papers/http-session-noms/article.tex) is the
-reference for these claims. The [table guide](../docs/tables.md) supplies
-populations, denominators and machine-readable results.
+The complete submitted manuscript is kept in a separate local freeze identified
+by the [artifact record](../submissions/noms2027/verification.json).
+The [table guide](../docs/tables.md) supplies populations, denominators and
+machine-readable results for the public evidence below.
 
 | Evidence | Result | Cost or limit |
 |---|---|---|

@@ -1,9 +1,10 @@
 # NOMS 2027 evaluation
 
-This directory contains the evaluation code and saved reductions supporting the
-[submitted manuscript](../../papers/http-session-noms/article.tex), recorded by
-tag `noms2027-submitted`. The paper has two figures, eight tables and one appendix.
-Its [table guide](../../docs/tables.md) defines each population and denominator.
+This directory contains evaluation code and saved reductions. The complete
+manuscript is kept in a separate local freeze identified by the
+[artifact record](../../submissions/noms2027/verification.json).
+Its two figures and eight table snapshots remain public; the
+[table guide](../../docs/tables.md) defines each population and denominator.
 
 ## Start here
 
@@ -13,10 +14,10 @@ From the repository root:
 make check
 ```
 
-This checks the submission package, eight current table exports and 217 numerical
+This checks public artifact hashes, eight table snapshots and 217 numerical
 cells against saved reductions. It needs Python 3.9+ and Make, without private
-traffic or the experimental Python environment. To refresh the current table
-transcriptions and audit record, use `make tables`.
+traffic, the full manuscript or the experimental Python environment. To regenerate
+CSVs and the audit record from the public snapshot, use `make tables`.
 
 The [experimental environment](../README.md#python-environment) is needed for
 analyses using NumPy, SciPy and pandas. With that environment, run the synthetic
@@ -24,7 +25,7 @@ sustained-botnet regression checks from the root with `make test`.
 
 ## Submitted results and their inputs
 
-Paths in this table are relative to this directory. The manuscript exports are
+Paths in this table are relative to this directory. The committed snapshots are
 transcriptions; the audit independently checks the supported numerical cells.
 
 | Paper element | Saved input or record |
@@ -52,7 +53,7 @@ The [reproduction guide](../../docs/reproduction.md) separates these operations:
 
 | Operation | Inputs required | Entry point |
 |---|---|---|
-| Integrity, table transcription and supported numerical checks | Committed files | `make check` from the root |
+| Public integrity, table snapshot consistency and numerical checks | Committed files | `make check` from the root |
 | Prospective report from reductions | Committed reductions and experimental Python environment | `scripts/block_report.py`; exact command in the reproduction guide |
 | Generated-scope experiments | Scenario caches and generator distributions | `symbolic`, `unseen-synth` targets |
 | Operator-endpoint evaluation and reductions | Restricted exports and endpoint mapping | `rule-production*`, `production-tables*` targets |

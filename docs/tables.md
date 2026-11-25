@@ -1,6 +1,9 @@
 # Reading the current tables and their sources
 
-This guide follows the eight tables in the [submitted manuscript](../papers/http-session-noms/article.tex), recorded by tag `noms2027-submitted`. [Figures 1–2 have an illustrated guide](figures.md).
+This guide follows the eight public table snapshots. Their submitted-source hash
+is recorded in the [artifact metadata](../submissions/noms2027/verification.json);
+the full manuscript is kept in a separate local freeze.
+[Figures 1–2 have an illustrated guide](figures.md).
 
 ## How to read the numbers
 

@@ -1,6 +1,9 @@
-# References
+# Bibliography
 
-The current bibliography is [references.bib](../papers/http-session-noms/references.bib); citation placement and claim scope are in [article.tex](../papers/http-session-noms/article.tex). Its synchronized copy is included in the submission package. Use the complete current bibliography when uploading to Overleaf.
+The [public bibliography](../papers/http-session-noms/references.bib) is the one
+used by the submitted study. The full manuscript is preserved separately in a
+local freeze and is not distributed in this checkout. Its source hash is in the
+[artifact record](../submissions/noms2027/verification.json).
 
-The bibliography in the submission package matches the canonical source. Earlier
-versions are indexed separately in the [historical archive](../archive/README.md).
+Earlier bibliography and manuscript files are preserved in the local historical
+snapshot. Public historical metadata is indexed in [archive/](../archive/README.md).

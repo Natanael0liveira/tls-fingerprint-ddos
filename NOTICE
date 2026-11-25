@@ -1,10 +1,6 @@
 The repository is released under the MIT license (LICENSE), except for these files,
 which keep their own licenses:
 
-- papers/http-session-noms/IEEEtran.cls, papers/http-session-noms/IEEEtran.bst
-  and papers/http-session-noms/stfloats.sty are
-  distributed under the LaTeX Project Public License (LPPL), as their headers
-  state.
 - The aggregate distributions under experiments/sprint-2/distributions/ are
   derived from the public CICIDS2017 dataset and remain subject to its
   provider's terms.

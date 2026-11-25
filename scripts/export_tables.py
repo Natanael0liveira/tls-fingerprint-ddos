@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Export manuscript tables faithfully; transcription is not experimental reproduction."""
+"""Check/export the public table snapshot, optionally comparing a private frozen TeX.
+
+The public snapshot is a transcription, not experimental reproduction. Its rows
+are independently checked against reductions by audit_paper.py.
+"""
 import argparse
 import csv
 import hashlib
@@ -9,8 +13,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'papers/http-session-noms/article.tex'
 DEST = ROOT / 'experiments/sprint-6-noms/results/manuscript'
+REPORT = ROOT / 'submissions/noms2027/verification.json'
 LABELS = ['related', 'configs', 'floor', 'real', 'block', 'symbolic', 'triggers']
 HEADERS = [
     ['work', 'selection', 'question'],
@@ -34,8 +38,23 @@ def plain(s):
     return s.replace('$', '').replace('{=}', '=').strip()
 
 
-def extract():
-    source = SOURCE.read_text()
+def extract(source_path=None):
+    expected = json.loads(REPORT.read_text())['source_sha256']
+    if source_path is None:
+        data = json.loads((DEST / 'tables.json').read_text())
+        if data['source_sha256'] != expected:
+            raise ValueError('Table snapshot identifies a different submitted manuscript')
+        tables = data['tables']
+        if len(tables) != len(SPECS) or {t['label'] for t in tables} != {'tab:' + s for s in SPECS}:
+            raise ValueError('Table snapshot has missing or duplicate labels')
+        for number, table in enumerate(tables, 1):
+            if table['number'] != number or any(len(row) != len(table['columns']) for row in table['rows']):
+                raise ValueError(f'Malformed table snapshot: {table["label"]}')
+        return data
+    source_path = Path(source_path)
+    if hashlib.sha256(source_path.read_bytes()).hexdigest() != expected:
+        raise ValueError('Private TeX does not match the frozen submitted-source hash')
+    source = source_path.read_text()
     source = re.sub(r'(?<!\\)%[^\n]*', '', source)
     blocks = re.findall(r'\\begin\{table\*?\}.*?\\end\{table\*?\}', source, re.S)
     tables = []
@@ -78,12 +97,12 @@ def extract():
     if seen != set(SPECS):
         raise ValueError(f'Missing tables: {sorted(set(SPECS) - seen)}')
     return {'revision': 'noms2027-submission', 'kind': 'manuscript_transcription',
-            'source': str(SOURCE.relative_to(ROOT)),
-            'source_sha256': hashlib.sha256(SOURCE.read_bytes()).hexdigest(), 'tables': tables}
+            'source': 'papers/http-session-noms/article.tex',
+            'source_sha256': expected, 'tables': tables}
 
 
-def outputs():
-    data = extract()
+def outputs(source_path=None):
+    data = extract(source_path)
     out = {'tables.json': json.dumps(data, indent=2, ensure_ascii=False) + '\n'}
     for table in data['tables']:
         buf = io.StringIO(newline='')
@@ -97,11 +116,13 @@ def outputs():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
+    parser.add_argument('--source', type=Path,
+                        help='Compare with this private frozen TeX; it must match the recorded hash')
     args = parser.parse_args()
     if not args.check:
         DEST.mkdir(parents=True, exist_ok=True)
     bad = []
-    for name, content in outputs().items():
+    for name, content in outputs(args.source).items():
         path = DEST / name
         if args.check:
             if not path.exists() or path.read_bytes() != content.encode():
@@ -110,7 +131,8 @@ def main():
             path.write_bytes(content.encode())
     if bad:
         raise SystemExit('Stale table exports: ' + ', '.join(bad))
-    print('Eight current tables: ' + ('exports match submission TeX' if args.check else 'exported with notes and provenance'))
+    basis = 'private frozen TeX' if args.source else 'committed table snapshot (full TeX withheld)'
+    print('Eight tables: ' + ('exports match ' if args.check else 'exported from ') + basis)
 
 
 if __name__ == '__main__':

@@ -6,4 +6,4 @@ The contribution evaluates when endpoint-relative fingerprint profiles permit se
 
 The study includes modal, z-score, novelty and history-based comparisons, plus an exploratory per-fingerprint origin cap. The cap challenges excess origins while the filters block selected fingerprints; the overview compares exposure to those distinct actions. The study does not benchmark a complete commercial WAF or establish superiority over selected-fingerprint challenges or prefix filters.
 
-Authoritative claims and citations are in [article.tex](../papers/http-session-noms/article.tex) and [references.bib](../papers/http-session-noms/references.bib).
+The [artifact record](../submissions/noms2027/verification.json) identifies the submitted source; its full text is kept in a separate local freeze. The [bibliography](../papers/http-session-noms/references.bib) remains public.

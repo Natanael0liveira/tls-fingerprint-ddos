@@ -1,9 +1,11 @@
 # TLS Fingerprint DDoS Filtering
 
-Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**, submitted to IEEE/IFIP NOMS 2027. The submitted source is recorded by tag **`noms2027-submitted`**. The paper has two figures and eight tables. A local rebuild was verified on 24 November 2026: 11 pages, with the main text through page 8.
+Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**, submitted to IEEE/IFIP NOMS 2027. This checkout distributes code, figures, table snapshots and anonymized reductions. The complete manuscript and upload package are preserved in a separate local freeze; their hashes are in the [artifact record](submissions/noms2027/verification.json).
 
-- [Current manuscript and build instructions](papers/http-session-noms/README.md)
-- [Submission package](submissions/noms2027/README.md), [LaTeX](submissions/noms2027/latex/article.tex), [verification record](submissions/noms2027/verification.json)
+Full manuscript files have been removed from the current tree. Earlier Git commits and the historical tag `noms2027-submitted` still contain them; this change does not erase previously published history.
+
+- [Supporting figures and bibliography](papers/http-session-noms/README.md)
+- [Submission metadata and private freeze](submissions/noms2027/README.md), [verification record](submissions/noms2027/verification.json)
 - [Glossary and configurations](docs/concepts.md), [metrics](docs/metrics.md), [study design](docs/evaluation.md)
 - [Figures explained](docs/figures.md), [tables and provenance](docs/tables.md)
 - [Reproduction and data availability](docs/reproduction.md)
@@ -27,16 +29,16 @@ The data span 23 days at four operator endpoints: 3 initial calibration days, 5 
 
 | Path | Purpose |
 |---|---|
-| `papers/http-session-noms/` | Canonical manuscript, bibliography and figures; edit here |
-| `submissions/noms2027/` | Self-contained delivery, verified PDF, checksums and source comparison |
+| `papers/http-session-noms/` | Public supporting figures and bibliography; full manuscript omitted |
+| `submissions/noms2027/` | Submission hashes, historical verification scope and public artifact checksums |
 | `docs/` | Current definitions, figure/table guides and reproduction instructions |
 | `experiments/sprint-6-noms/` | Evaluation code and saved aggregate results |
 | `experiments/sprint-6-noms/results/manuscript/` | Exports and numerical audit of the current manuscript |
 | `experiments/sprint-1/` through `sprint-5/`, `common/`, `pillar*/` | Experiment infrastructure and dependencies still imported by the evaluation |
 | `ontology/` | Vocabulary read by the reference implementation |
-| [archive/](archive/README.md) | Earlier manuscript snapshots and development notes, indexed separately from the submitted evaluation |
+| [archive/](archive/README.md) | Historical metadata and development notes; complete manuscript snapshots stay in ignored local storage |
 
-Current PDFs and upload bundles are local build products. Source files, verification records and checksums are versioned. Historical experiment paths remain stable so imports and reproduction commands continue to work.
+The private freeze includes the submitted TeX, a locally rebuilt PDF, bibliography, figures, build dependencies and a self-contained Git bundle. Public checks use the recorded source hash without requiring those private files. Historical experiment paths remain stable so imports and reproduction commands continue to work.
 
 ## Quick checks
 
@@ -44,9 +46,9 @@ Current PDFs and upload bundles are local build products. Source files, verifica
 make check
 ```
 
-This verifies delivery/source synchronization, eight table exports, 217 independently checked numerical cells and archived snapshot integrity. See the audit output for its coverage and gaps. These checks need only Python 3.9+ and Make; CI uses Python 3.11.
+This verifies public artifact checksums, consistency of eight table snapshots and 217 numerical cells against saved reductions. It also rejects full manuscript files in the current paper/package directories. These checks need only Python 3.9+ and Make; CI uses Python 3.11.
 
-To regenerate current table transcriptions and their audit record, run `make tables`. To refresh the delivery from the already verified source and PDF, run `make submission`. Packaging refuses to reuse a verification record for a different source, bibliography or PDF.
+`make tables` regenerates CSVs and the audit record from the committed table snapshot. `make artifact` refreshes the public checksum manifest without copying any manuscript. Full-source verification is a separate local operation described in the [reproduction guide](docs/reproduction.md).
 
 The sustained-botnet regression checks require the experimental environment:
 

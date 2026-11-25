@@ -1,39 +1,25 @@
 #!/usr/bin/env python3
-"""Synchronize the delivery from the manuscript after its verification is recorded.
-
-This copies build inputs and the verified PDF; it does not run new experiments
-or carry an old verification report forward to a different source or PDF.
-"""
-import difflib
+"""Refresh public artifact checksums without copying a full manuscript."""
 import json
-import shutil
-
-from check_release import BASELINE, COPIES, DELIVERY, PAPER, sha256
+from check_release import ROOT, PUBLIC_FILES, DELIVERY, manuscript_paths, sha256
 
 
 def main():
+    found = manuscript_paths()
+    if found:
+        raise SystemExit('Move full manuscript files to the private freeze before packaging:\n'
+                         + '\n'.join(str(p.relative_to(ROOT)) for p in found))
+    for name in PUBLIC_FILES:
+        if not (ROOT / name).is_file():
+            raise SystemExit(f'Missing public artifact input: {name}')
     report = json.loads((DELIVERY / 'verification.json').read_text())
-    for path, key in [(PAPER / 'article.tex', 'source_sha256'),
-                      (PAPER / 'references.bib', 'bibliography_sha256'),
-                      (PAPER / 'article.pdf', 'pdf_sha256')]:
-        if not path.is_file() or sha256(path) != report[key]:
-            raise SystemExit(f'{path.name} is missing or differs from verification.json; verify the new manuscript first')
-    # Validate every input before touching the delivery.
-    for source in COPIES.values():
-        if not (PAPER / source).is_file():
-            raise SystemExit(f'Missing manuscript dependency: {source}')
-    baseline = (BASELINE / 'article.tex').read_text().splitlines(keepends=True)
-    current = (PAPER / 'article.tex').read_text().splitlines(keepends=True)
-    for copy, source in COPIES.items():
-        destination = DELIVERY / copy
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(PAPER / source, destination)
-    shutil.copy2(PAPER / 'article.pdf', DELIVERY / 'article.pdf')
-    (DELIVERY / 'changes-from-r53.diff').write_text(''.join(difflib.unified_diff(
-        baseline, current, fromfile='r53/article.tex', tofile='submission/article.tex')))
-    names = sorted([*COPIES, 'article.pdf', 'README.md', 'verification.json', 'changes-from-r53.diff'])
-    (DELIVERY / 'SHA256SUMS').write_text(''.join(f'{sha256(DELIVERY / name)}  {name}\n' for name in names))
-    print(f'Submission synchronized: {len(names)} files in {DELIVERY.relative_to(PAPER.parents[1])}')
+    for name in ('tables.json', 'audit.json'):
+        data = json.loads((ROOT / 'experiments/sprint-6-noms/results/manuscript' / name).read_text())
+        if data['source_sha256'] != report['source_sha256']:
+            raise SystemExit(f'{name} does not identify the recorded submitted source')
+    (DELIVERY / 'SHA256SUMS').write_text(''.join(
+        f'{sha256(ROOT / name)}  {name}\n' for name in sorted(PUBLIC_FILES)))
+    print(f'Public artifact manifest refreshed: {len(PUBLIC_FILES)} files; no manuscript copied')
 
 
 if __name__ == '__main__':

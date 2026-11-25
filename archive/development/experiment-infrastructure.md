@@ -12,7 +12,7 @@ been adjusted for this archive location.
 # Experiments
 
 Code, configurations and committed results for every experimental stage of the paper
-([`papers/http-session-noms/article.tex`](../../papers/http-session-noms/article.tex)). The
+([`papers/http-session-noms/article.tex`](../../papers/http-session-noms/README.md)). The
 repository versions code, configurations, result files and anonymized production summaries
 (E1–E4, counts and rates). Logs, captures, scenario caches and the operator's exports stay on an
 external data drive.

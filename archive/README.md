@@ -1,14 +1,17 @@
-# Archive
+# Historical records
 
-For the submitted article and its results, use the [manuscript](../papers/http-session-noms/README.md)
-and [evaluation guide](../experiments/sprint-6-noms/README.md). Tag `noms2027-submitted`
-records that source. The material below documents earlier stages.
+For the public research artifact, start with the [evaluation guide](../experiments/sprint-6-noms/README.md).
+Complete manuscripts and upload projects have been removed from the current tree.
+The authors retain a separate local freeze; its hashes and scope are recorded in
+the [submission metadata](../submissions/noms2027/README.md).
 
 | Path | Contents |
 |---|---|
-| [noms2027/r53/](noms2027/r53/README.md) | Earlier manuscript snapshot; `r53` is an internal draft identifier, not the submitted version. Original hashes are preserved |
-| [Earlier table exports](../experiments/sprint-6-noms/results/r53/README.md) | Transcriptions and verification records belonging to that earlier snapshot |
-| [development/](development/README.md) | Earlier infrastructure guide and chronological evaluation notebook, with draft-specific section numbers and review notes |
-| `local/` | Private local history, author handoffs, review notes and older delivery files; ignored by Git |
+| [noms2027/r53/](noms2027/r53/README.md) | Metadata and original manifest of an earlier internal draft; complete files are kept locally |
+| [Earlier table exports](../experiments/sprint-6-noms/results/r53/README.md) | Historical table transcriptions and numerical checks |
+| [development/](development/README.md) | Earlier infrastructure guide and evaluation notebook |
+| `local/submitted/noms2027-2026-11-24/` | Ignored local manuscript freeze, including a self-contained Git bundle |
+| `local/` | Other private local history and handoffs; ignored by Git |
 
-The current manuscript is in [papers/http-session-noms/](../papers/http-session-noms/README.md), and the current delivery is in [submissions/noms2027/](../submissions/noms2027/README.md). Archived source and result files are evidence of earlier revisions and should not be overwritten by current exports.
+The historical submission tag and old commits still contain manuscript files.
+This current-tree removal does not erase previously published history.

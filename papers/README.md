@@ -1,10 +1,9 @@
-# Manuscripts
+# Public paper support files
 
-The current paper is [http-session-noms/](http-session-noms/README.md). Edit its
-`article.tex`, bibliography and figure inputs there. The synchronized submission
-project is in [submissions/noms2027/](../submissions/noms2027/README.md).
+[http-session-noms/](http-session-noms/README.md) contains supporting figures and
+the bibliography for the NOMS 2027 study. Complete TeX manuscripts, PDFs and upload
+projects are omitted from the current tree and preserved in a separate local freeze.
+See the [artifact record](../submissions/noms2027/README.md) for hashes and scope.
 
-The submitted source is recorded by tag `noms2027-submitted`. Earlier manuscript
-snapshots are indexed in the [historical archive](../archive/README.md).
-Older local PDFs and review notes are kept separately under the ignored
-`archive/local/` directory.
+Earlier Git commits and the historical submission tag still contain manuscript
+files. Their removal from this checkout does not erase that published history.
