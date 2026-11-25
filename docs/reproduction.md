@@ -1,10 +1,10 @@
 # Reproduction and data availability
 
-## Current manuscript and historical baseline
+## Submitted manuscript
 
-The canonical source is [papers/http-session-noms/article.tex](../papers/http-session-noms/article.tex). The [current delivery](../submissions/noms2027/README.md) includes the complete LaTeX project, checksums and a source-bound verification record. Current PDFs are local build products. The frozen r53 source, bibliography, figures and PDF are preserved separately in [archive/noms2027/r53/](../archive/noms2027/r53/README.md), with the original manifest.
+The canonical source is [papers/http-session-noms/article.tex](../papers/http-session-noms/article.tex), recorded by tag `noms2027-submitted`. The [submission package](../submissions/noms2027/README.md) includes the complete LaTeX project, checksums and a source-bound verification record. Current PDFs are local build products.
 
-All eight current tables are exported under `experiments/sprint-6-noms/results/manuscript/`. These files transcribe the manuscript and identify its source hash. The seven historical r53 exports remain unchanged under `results/r53/`.
+All eight submitted tables are exported under `experiments/sprint-6-noms/results/manuscript/`. These files transcribe the manuscript and identify its source hash.
 
 ## Checks without operator data
 
@@ -20,7 +20,7 @@ python3 scripts/export_tables.py --check
 python3 experiments/sprint-6-noms/scripts/audit_paper.py
 ```
 
-The release check verifies the archived r53 files, the current delivery's checksums and synchronization with the canonical source. Both current PDF copies are checked when available; they may be absent in a public checkout. The table exporter covers all eight tables in source order. The numerical audit checks 217 cells against saved reductions and reports its omissions.
+The release check verifies the submission checksums, synchronization with the canonical source and archived snapshot integrity. Both current PDF copies are checked when available; they may be absent in a public checkout. The table exporter covers all eight tables in source order. The numerical audit checks 217 cells against saved reductions and reports its omissions.
 
 Use `make tables` to regenerate the current transcriptions and their audit record. Use `make submission` to refresh the delivery from source and PDF matching its verification record; a changed manuscript requires a new verification rather than relabeling an old result.
 
@@ -63,3 +63,9 @@ The audit supports 217 numeric cells, including 24 primary E5 timing cells. It d
 The manuscript's persistence estimates use the original replay, which fixes a daily stack pool but redraws bot fingerprints each window. The corrected script defaults to fixed per-bot fingerprints and preserves the original model via `--assignment resampled`. No fixed-assignment production rerun was performed because the private exports were unavailable. See the [post hoc guide](../experiments/sprint-6-noms/scripts/posthoc/README.md).
 
 Repository checks, figure generation, compilation and checks against saved reductions do not rerun the evaluation on restricted data. Cleanup does not create new experimental evidence.
+
+## Historical material
+
+Earlier manuscript snapshots, their table exports and development notes are
+indexed in [archive/](../archive/README.md). Their revision identifiers and table
+numbers belong to those drafts; they do not define the submitted evaluation.

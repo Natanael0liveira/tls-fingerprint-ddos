@@ -1,53 +1,30 @@
-# NOMS 2027 — versão submetida registrada em 24/11/2026
+# NOMS 2027 submitted source package
 
 **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**
 
-Esta entrega está em `submissions/noms2027/` e está sincronizada com o fonte
-e o PDF canônicos em `papers/http-session-noms/`. A r53 congelada permanece
-intacta em `archive/noms2027/r53/`.
+Tag `noms2027-submitted` records the submitted source. `latex/article.tex` is
+byte-identical to the canonical source in `papers/http-session-noms/`.
+The local PDF was rebuilt from that source and verified on 24 November 2026;
+it has not been compared with the PDF uploaded to the submission system.
+Current PDFs are local build products and may be absent in a public checkout.
 
-O autor identificou o `papers/http-session-noms/article.tex` atual como o TEX
-final submetido em sua mensagem de 24/11/2026. O conteúdo foi preservado sem
-edições e copiado para `latex/article.tex`. O PDF desta pasta foi recompilado
-localmente a partir desse fonte; não foi comparado ao arquivo enviado ao
-sistema de submissão.
+## Package contents
 
-## Arquivos
-
-| Caminho | Conteúdo |
+| Path | Contents |
 |---|---|
-| `article.pdf` | PDF recompilado localmente a partir do TEX submetido |
-| `latex/article.tex` | Fonte completo em um arquivo |
-| `latex/references.bib` | Bibliografia atual |
-| `latex/IEEEtran.cls`, `IEEEtran.bst`, `stfloats.sty` | Dependências locais de compilação |
-| `latex/figures/` | As duas figuras usadas pelo artigo |
-| `figure-sources/` | Scripts das figuras |
-| `changes-from-r53.diff` | Comparação do fonte atual com a r53 congelada |
-| `verification.json` | Hashes e alcance das verificações desta entrega |
-| `SHA256SUMS` | Manifesto dos arquivos da entrega |
+| `article.pdf` | Locally rebuilt PDF, when present |
+| [latex/article.tex](latex/article.tex) | Complete manuscript source |
+| [latex/references.bib](latex/references.bib) | Bibliography used by the submitted source |
+| `latex/IEEEtran.cls`, `IEEEtran.bst`, `stfloats.sty` | Local build dependencies |
+| `latex/figures/` | The two figures used by the paper |
+| `figure-sources/` | Figure-generation scripts |
+| [verification.json](verification.json) | Source/PDF hashes, checks performed and their limits |
+| [SHA256SUMS](SHA256SUMS) | Package checksum manifest |
 
-## Conteúdo atual
+## Build
 
-- Abstract e introdução apresentam cobertura após o trigger, custo por falso
-  alarme em cada endpoint e exposição ao fallback como critérios de decisão.
-- A Seção V abre com a tabela-síntese do período prospectivo; seguem os
-  mecanismos de seleção, a perda de cobertura pelo trigger, as variantes e
-  verificações post hoc, e os ataques reais.
-- A tabela distingue bloqueios de desafios e identifica o cap como post hoc.
-  `n/a` significa ausência de falso alarme em E1–E4; E5 é discutido separadamente.
-- O replay de persistência descreve explicitamente o modelo executado: pool
-  diário de 25 stacks, com a fingerprint de cada bot sorteada a cada janela.
-  Os 8,4% e 91% pertencem a esse modelo; não demonstram o caso de atribuições
-  fixas por bot. O resultado somado de 60% e a explicação “picks add up” saíram.
-- A declaração de IA inclui Claude (Anthropic) e Codex (OpenAI).
-
-O script `experiments/sprint-6-noms/scripts/posthoc/sustained_ratelimit.py`, no
-repositório, agora usa atribuições fixas por padrão e oferece
-`--assignment resampled` para reproduzir o modelo anterior. A execução corrigida
-sobre os dados de produção depende dos exports privados, indisponíveis nesta
-verificação. Nenhum resultado novo foi inventado ou atribuído a essa execução.
-
-## Compilar e conferir
+Upload the complete `latex/` directory to Overleaf, with `article.tex` as the main
+document. To build locally, run from this package directory:
 
 ```sh
 cd latex
@@ -57,38 +34,35 @@ pdflatex -interaction=nonstopmode -halt-on-error article
 pdflatex -interaction=nonstopmode -halt-on-error article
 ```
 
-Resultado conferido: 11 páginas; texto principal, conclusão, agradecimentos,
-declaração de IA e reprodutibilidade na página 8, seguidos pelas referências e
-pelo apêndice, que termina na página 11. Sem overfull, citações ou referências
-indefinidas. O hash de uma nova compilação pode variar com os metadados do PDF.
+The verified local build has 11 pages. Main text, conclusion, acknowledgment,
+AI disclosure and reproducibility end on page 8; references begin there and the
+appendix ends on page 11. It has no overfull boxes or undefined references or
+citations. PDF hashes can change with build metadata.
 
-No repositório, `make -C experiments/sprint-6-noms audit` verifica 217 células
-numéricas contra os resultados salvos. As seis células numéricas das duas
-primeiras linhas da tabela-síntese foram conferidas separadamente. Esses testes
-não reexecutam os dados privados nem auditam todos os resultados em prosa ou os
-números do cap; o relatório registra essas limitações.
+## Checks and interpretation
 
-Para conferir a integridade desta pasta no macOS:
+Run `make check` from the repository root to verify source/package integrity,
+eight table transcriptions and 217 numerical cells against saved reductions.
+The audit reports its gaps. Six overview values were checked separately; cap
+figures and every prose statistic are not independently audited by those checks.
+No check reruns restricted operator data.
 
-```sh
-shasum -a 256 -c SHA256SUMS
-```
+The [table guide](../../docs/tables.md), [figure guide](../../docs/figures.md) and
+[evaluation design](../../docs/evaluation.md) explain the reported populations
+and separate pre-registered comparisons from exploratory analyses.
+The [reproduction guide](../../docs/reproduction.md) describes available inputs.
+The sustained-botnet estimates use the original per-window fingerprint resampling;
+there is no validated fixed-assignment production rerun here.
 
-## Reprodução no Overleaf
+## Maintaining the package
 
-Suba **todo o conteúdo de `submissions/noms2027/latex/`** no Overleaf, com
-`article.tex` como documento principal. A bibliografia também mudou desde a entrega antiga; trocar apenas o
-`.tex` não é suficiente. O TEX desta pasta corresponde à versão submetida
-identificada pelo autor; o PDF é uma recompilação local.
+Canonical inputs live in `papers/http-session-noms/`. After a changed manuscript
+has been rebuilt and its own verification recorded, `make submission` synchronizes
+this package and regenerates its checksums. It refuses inputs that differ from
+the recorded source, bibliography or PDF. Preserve `noms2027-submitted` as the
+record of the submitted version.
 
-As figuras são as mesmas da r53. Para regenerá-las, siga o guia
-`docs/figures.md` no repositório. E5 continua anonimizado: não acrescente hosts,
-endereços, redes nem datas que identifiquem o cliente.
-
-## Atualizar a entrega
-
-Edite o fonte canônico em `papers/http-session-noms/`. Depois de conferir o
-artigo e registrar a verificação correspondente, execute `make submission`
-na raiz do repositório. O comando sincroniza os arquivos e regenera o diff e
-os checksums; ele recusa fonte, bibliografia ou PDF diferentes dos registrados
-em `verification.json`. Execute `make check` para verificar toda a estrutura.
+The optional [historical source diff](changes-from-r53.diff) compares this source
+with an earlier internal draft. Earlier snapshots and their identifiers are
+explained in the [archive index](../../archive/README.md); they are not the
+submitted version. Public E5 outputs remain anonymized.

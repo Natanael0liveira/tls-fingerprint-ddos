@@ -1,6 +1,6 @@
 # Reading the current tables and their sources
 
-This guide follows the eight tables in the [current manuscript](../papers/http-session-noms/article.tex). [Figures 1–2 have an illustrated guide](figures.md). The [r53 archive](../archive/noms2027/r53/README.md) has its own historical numbering.
+This guide follows the eight tables in the [submitted manuscript](../papers/http-session-noms/article.tex), recorded by tag `noms2027-submitted`. [Figures 1–2 have an illustrated guide](figures.md).
 
 ## How to read the numbers
 
@@ -112,4 +112,4 @@ The [current machine-readable export](../experiments/sprint-6-noms/results/manus
 
 Result paths above are relative to `experiments/sprint-6-noms/results/`. The [current audit](../experiments/sprint-6-noms/results/manuscript/audit.json) lists 217 checked cells and its coverage limits. The overview's six numerical cells for the primary and novelty rows were checked separately in the [submission verification](../submissions/noms2027/verification.json). Neither check reruns the restricted data.
 
-Historical [r53 exports](../experiments/sprint-6-noms/results/r53/README.md) are retained unchanged. See [metrics](metrics.md) for denominators and [reproduction](reproduction.md) for data availability.
+See [metrics](metrics.md) for denominators and [reproduction](reproduction.md) for data availability. Earlier exports are indexed in the [historical archive](../archive/README.md).

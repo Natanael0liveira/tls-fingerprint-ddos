@@ -2,9 +2,9 @@
 
 **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**
 
-Edit [article.tex](article.tex), [references.bib](references.bib) and the two figures here. This is the canonical source. The [submission package](../../submissions/noms2027/README.md) contains the synchronized delivery; its [verification record](../../submissions/noms2027/verification.json) identifies the exact source and PDF.
+This directory contains the canonical [article.tex](article.tex), [references.bib](references.bib) and two figures. The [submission package](../../submissions/noms2027/README.md) contains the synchronized delivery; its [verification record](../../submissions/noms2027/verification.json) identifies the exact source and PDF.
 
-The author identified the current `article.tex` as the final submitted version on 24 November 2026. It is preserved without textual changes in the synchronized package. The local PDF was rebuilt from this source; it has not been compared with the PDF uploaded to the submission system.
+Tag `noms2027-submitted` records the submitted source, identified on 24 November 2026. Its synchronized copy is byte-identical. The local PDF was rebuilt from this source; it has not been compared with the PDF uploaded to the submission system.
 
 The verified PDF has 11 pages. Main text, conclusion, acknowledgment, AI disclosure and reproducibility end on page 8; references begin on page 8 and the appendix ends on page 11. Results open with a three-policy overview of the prospective period, followed by selection mechanisms, trigger effects, variants and exploratory checks, and the real-attack replay.
 
@@ -31,7 +31,7 @@ make submission
 
 `make check` verifies the delivery and archive, the current table exports and 217 numerical cells against saved results. `make tables` refreshes transcriptions and the audit record. `make submission` copies this verified source, bibliography, dependencies and PDF into the delivery and regenerates its diff and checksums. It rejects inputs that differ from the recorded verification; it does not certify a new manuscript automatically.
 
-For Overleaf, upload the complete `submissions/noms2027/latex/` directory. The current bibliography differs from the frozen r53 version.
+For Overleaf, upload the complete `submissions/noms2027/latex/` directory, including its bibliography and figures.
 
 ## Figures and experimental limits
 
@@ -45,4 +45,4 @@ Run that command from the repository root after installing `experiments/requirem
 
 Sustained-botnet results describe the original per-window fingerprint resampling, not a validated fixed-assignment rerun. The corrected replay defaults to fixed per-bot fingerprints and requires private exports for a production rerun. Its synthetic regression tests do not establish new production numbers. See the [post hoc guide](../../experiments/sprint-6-noms/scripts/posthoc/README.md).
 
-The [frozen r53 archive](../../archive/noms2027/r53/README.md) preserves the original source, bibliography, PDF and checksum manifest byte for byte. E5 remains anonymized in public artifacts.
+Earlier snapshots and development notes are indexed in the [historical archive](../../archive/README.md). E5 remains anonymized in public artifacts.

@@ -31,7 +31,7 @@ column names, including the two attacker-label conventions.
 The algorithms were ported from the handoff; restricted-data runs were not
 reexecuted during this repository update. The aggregate files are recorded
 outputs, not values manufactured from the manuscript. `hourly_compare.py` is
-historical supporting code, not a required reproduction command for r53.
+historical supporting code, not a required reproduction command for the submitted manuscript.
 
 ## Sustained-botnet assignment correction (23 Nov 2026)
 

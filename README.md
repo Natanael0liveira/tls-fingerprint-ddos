@@ -1,13 +1,13 @@
 # TLS Fingerprint DDoS Filtering
 
-Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**, submitted to IEEE/IFIP NOMS 2027. The author identified the current canonical TeX as the final submitted version on **24 November 2026**. A local rebuild was verified on that date: 11 pages, with the main text through page 8.
+Research artifact for **An Empirical Evaluation of TLS Fingerprint-Based Filtering for Application-Layer DDoS**, submitted to IEEE/IFIP NOMS 2027. The submitted source is recorded by tag **`noms2027-submitted`**. The paper has two figures and eight tables. A local rebuild was verified on 24 November 2026: 11 pages, with the main text through page 8.
 
 - [Current manuscript and build instructions](papers/http-session-noms/README.md)
 - [Submission package](submissions/noms2027/README.md), [LaTeX](submissions/noms2027/latex/article.tex), [verification record](submissions/noms2027/verification.json)
 - [Glossary and configurations](docs/concepts.md), [metrics](docs/metrics.md), [study design](docs/evaluation.md)
 - [Figures explained](docs/figures.md), [tables and provenance](docs/tables.md)
 - [Reproduction and data availability](docs/reproduction.md)
-- [Frozen r53 baseline](archive/noms2027/r53/README.md)
+- [Evaluation code and saved results](experiments/sprint-6-noms/README.md), [findings](experiments/FINDINGS.md)
 
 ## What was evaluated
 
@@ -29,14 +29,12 @@ The data span 23 days at four operator endpoints: 3 initial calibration days, 5 
 |---|---|
 | `papers/http-session-noms/` | Canonical manuscript, bibliography and figures; edit here |
 | `submissions/noms2027/` | Self-contained delivery, verified PDF, checksums and source comparison |
-| `archive/noms2027/r53/` | Frozen r53 snapshot and its original checksums |
-| `archive/local/` | Ignored local history, reviews and original handoffs |
 | `docs/` | Current definitions, figure/table guides and reproduction instructions |
 | `experiments/sprint-6-noms/` | Evaluation code and saved aggregate results |
 | `experiments/sprint-6-noms/results/manuscript/` | Exports and numerical audit of the current manuscript |
-| `experiments/sprint-6-noms/results/r53/` | Historical r53 exports, retained unchanged |
 | `experiments/sprint-1/` through `sprint-5/`, `common/`, `pillar*/` | Experiment infrastructure and dependencies still imported by the evaluation |
 | `ontology/` | Vocabulary read by the reference implementation |
+| [archive/](archive/README.md) | Earlier manuscript snapshots and development notes, indexed separately from the submitted evaluation |
 
 Current PDFs and upload bundles are local build products. Source files, verification records and checksums are versioned. Historical experiment paths remain stable so imports and reproduction commands continue to work.
 
@@ -46,7 +44,7 @@ Current PDFs and upload bundles are local build products. Source files, verifica
 make check
 ```
 
-This verifies the frozen r53 archive, delivery/source synchronization, eight table exports and 217 independently checked numerical cells. See the audit output for its coverage and gaps. These checks need only Python 3.9+ and Make; CI uses Python 3.11.
+This verifies delivery/source synchronization, eight table exports, 217 independently checked numerical cells and archived snapshot integrity. See the audit output for its coverage and gaps. These checks need only Python 3.9+ and Make; CI uses Python 3.11.
 
 To regenerate current table transcriptions and their audit record, run `make tables`. To refresh the delivery from the already verified source and PDF, run `make submission`. Packaging refuses to reuse a verification record for a different source, bibliography or PDF.
 
